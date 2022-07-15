@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=3 uid="uid://beq256g2rwuc6"]
+
+[ext_resource type="FontFile" uid="uid://b01bb8eqxd1x" path="res://Fonts/PressStart2P-Regular.ttf" id="1_ek0wk"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="2_rai7d"]
+
+[sub_resource type="Animation" id="Animation_udevw"]
+resource_name = "ScaleLoop"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(15, -0.241298, -42.0661, 0.0860423, 15, 1, 34, -0.0795029, 0, 0.0832667, 0, 1, 15, -0.089617, 15, 0.194686, -32.5864, 1),
+"times": PackedFloat32Array(0, 0.506539, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ruhax"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lt0vl"]
+_data = {
+"RESET": SubResource("Animation_ruhax"),
+"ScaleLoop": SubResource("Animation_udevw")
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+offset_left = 182.0
+offset_top = 124.0
+offset_right = 842.0
+offset_bottom = 475.0
+
+[node name="GameName" type="Label" parent="CenterContainer/VBoxContainer"]
+offset_right = 660.0
+offset_bottom = 113.0
+theme_override_fonts/font = ExtResource("1_ek0wk")
+theme_override_font_sizes/font_size = 110
+text = "A-Game"
+horizontal_alignment = 1
+
+[node name="By" type="Label" parent="CenterContainer/VBoxContainer"]
+offset_top = 117.0
+offset_right = 660.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("1_ek0wk")
+theme_override_font_sizes/font_size = 15
+text = "By: Dani Frank"
+horizontal_alignment = 1
+
+[node name="space" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_top = 139.0
+offset_right = 660.0
+offset_bottom = 189.0
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_top = 193.0
+offset_right = 660.0
+offset_bottom = 243.0
+script = ExtResource("2_rai7d")
+
+[node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("1_ek0wk")
+theme_override_font_sizes/font_size = 0
+text = "START GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Control/StartGame"]
+libraries = {
+"": SubResource("AnimationLibrary_lt0vl")
+}
+
+[node name="Control2" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_top = 247.0
+offset_right = 660.0
+offset_bottom = 297.0
+script = ExtResource("2_rai7d")
+
+[node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("1_ek0wk")
+theme_override_font_sizes/font_size = 0
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Control2/StartGame"]
+libraries = {
+"": SubResource("AnimationLibrary_lt0vl")
+}
+
+[node name="Control3" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_top = 301.0
+offset_right = 660.0
+offset_bottom = 351.0
+script = ExtResource("2_rai7d")
+
+[node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("1_ek0wk")
+theme_override_font_sizes/font_size = 0
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Control3/StartGame"]
+libraries = {
+"": SubResource("AnimationLibrary_lt0vl")
+}
