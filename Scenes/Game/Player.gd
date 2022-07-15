@@ -7,7 +7,8 @@ func _ready():
 	pass # Replace with function body.
 
 var jump_allowed = true
-const jump_force = 5
+const jump_force = 7
+const max_torque = 7
 
 func allow_jump():
 	jump_allowed = true
@@ -16,7 +17,7 @@ func allow_jump():
 func _process(delta):
 	var forward := global_position - camera.global_position
 	forward.y = 0
-	var max_force = 5 - angular_velocity.length()
+	var max_force = max_torque - angular_velocity.length()
 	forward = forward.normalized() * max_force
 	var force_origin = global_position + Vector3.UP * 2 - global_position
 	if Input.is_key_pressed(KEY_W):
@@ -36,6 +37,10 @@ func _process(delta):
 			var tween = create_tween()
 			tween.tween_interval(1.0)
 			tween.tween_callback(allow_jump)
+		
+	for bullet in $BulletCollectArea.get_overlapping_bodies():
+		bullet.queue_free()
+		print_debug("HIT")
 
 func get_transformed_aabb() -> AABB:
 	return $CSGBox3D.get_transformed_aabb()

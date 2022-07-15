@@ -1,17 +1,24 @@
 extends Camera3D
 
-@onready var player = get_parent().find_child("Player")
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 var last_look_at = null
+var position_target = Vector3.ZERO
+
+func _ready():
+	position_target = global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var position_target = ((global_position - player.global_position).normalized() * 8) + player.global_position
-	position_target.y = 5
+	var player = get_parent().find_child("Player")
+	if player == null:
+		return
+	
+	var around_player :Vector3= ((position_target - player.global_position).normalized() * 8)
+	if Input.is_action_just_pressed("RotateCameraLeft"):
+		around_player = around_player.rotated(Vector3.UP, deg2rad(90))
+	if Input.is_action_just_pressed("RotateCameraRight"):
+		around_player = around_player.rotated(Vector3.UP, deg2rad(-90))
+	position_target = around_player + player.global_position
+	position_target.y = 6
 	global_position = global_position.lerp(position_target, 5*delta)
 	
 	var player_aabb : AABB = player.get_transformed_aabb()
@@ -21,4 +28,4 @@ func _process(delta):
 	if last_look_at:
 		target_look_at = last_look_at.lerp(target_look_at, delta)
 	last_look_at = target_look_at
-	look_at(target_look_at)
+	look_at(target_look_at + Vector3.UP * 2)
