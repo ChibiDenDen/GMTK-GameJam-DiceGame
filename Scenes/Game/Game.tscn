@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6or7sluan31c"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
+[ext_resource type="Script" path="res://Scenes/Game/Camera3D.gd" id="2_2y024"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0kuj"]
+albedo_color = Color(1, 0.482353, 0.505882, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s053r"]
+
+[sub_resource type="Environment" id="Environment_u4c4i"]
+
+[node name="Game" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World"]
+use_collision = true
+size = Vector3(500, 1, 500)
+material = SubResource("StandardMaterial3D_dj0h4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -25)
+use_collision = true
+size = Vector3(29, 1, 29)
+
+[node name="PlayerHolder" type="Node3D" parent="."]
+
+[node name="Player" type="RigidDynamicBody3D" parent="PlayerHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.255, 0)
+script = ExtResource("1_e1tbc")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerHolder/Player"]
+material_override = SubResource("StandardMaterial3D_l0kuj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHolder/Player"]
+shape = SubResource("BoxShape3D_s053r")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.255, 0)
+script = ExtResource("2_2y024")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u4c4i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.336879, -0.817484, 0.467154, 0.132168, 0.5323, 0.836175, -0.932226, -0.219947, 0.287365, 2.32451, 3.79325, 0)
+shadow_enabled = true
+directional_shadow_split_1 = 0.037
+directional_shadow_split_2 = 0.1
+directional_shadow_split_3 = 0.162
+directional_shadow_max_distance = 13.2

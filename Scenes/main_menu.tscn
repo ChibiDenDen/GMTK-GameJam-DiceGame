@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://beq256g2rwuc6"]
+[gd_scene load_steps=7 format=3 uid="uid://beq256g2rwuc6"]
 
 [ext_resource type="FontFile" uid="uid://b01bb8eqxd1x" path="res://Fonts/PressStart2P-Regular.ttf" id="1_ek0wk"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_h6b0h"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="2_rai7d"]
 
 [sub_resource type="Animation" id="Animation_udevw"]
@@ -39,6 +40,7 @@ _data = {
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource("1_h6b0h")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -135,3 +137,5 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_lt0vl")
 }
+
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/Control" to="." method="_on_startgame_gui_input"]
