@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bhwwphlt3c26n"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c1tb4jaj3o8ai"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb3fd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uo27"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
@@ -12,13 +12,13 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h64x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nfww"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0l8c6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ks3y"]
 bg_color = Color(1, 0.203922, 0.254902, 1)
 
 [resource]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_pb3fd")
-ProgressBar/styles/bg = SubResource("StyleBoxFlat_7h64x")
-ProgressBar/styles/fg = SubResource("StyleBoxFlat_0l8c6")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_8uo27")
+ProgressBar/styles/bg = SubResource("StyleBoxFlat_1nfww")
+ProgressBar/styles/fg = SubResource("StyleBoxFlat_5ks3y")

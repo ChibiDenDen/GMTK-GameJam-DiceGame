@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var player : RigidDynamicBody3D = get_parent()
+@onready var player : RigidDynamicBody3D = get_parent().get_parent().get_parent()
 
 const attack_angular_velocity_threshold := 2.0
 

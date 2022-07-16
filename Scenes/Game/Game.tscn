@@ -1,16 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=17 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
 [ext_resource type="Script" path="res://Scenes/Game/Camera3D.gd" id="2_2y024"]
-[ext_resource type="Script" path="res://Scenes/Game/Items/Shield/Shield.gd" id="2_8eg2t"]
-[ext_resource type="Script" path="res://Scenes/Game/Items/Sword/Sword.gd" id="2_aqgrs"]
-[ext_resource type="Script" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gd" id="2_skyk2"]
-[ext_resource type="Shader" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gdshader" id="3_bt5u1"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
+[ext_resource type="PackedScene" uid="uid://ds27xo3cblttw" path="res://Scenes/Game/Items/Shield/Shield.tscn" id="3_ia310"]
+[ext_resource type="PackedScene" uid="uid://uhpr6hmvagxc" path="res://Scenes/Game/Items/Sword/Sword.tscn" id="4_qmp51"]
+[ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
 [ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
-[ext_resource type="Theme" uid="uid://bhwwphlt3c26n" path="res://Theme.tres" id="10_gpy6t"]
+[ext_resource type="Theme" uid="uid://c1tb4jaj3o8ai" path="res://Theme.tres" id="10_gpy6t"]
 [ext_resource type="Script" path="res://Scenes/Game/UIViewport.gd" id="10_m3rhi"]
 [ext_resource type="Script" path="res://Scenes/Game/UI/HPBar.gd" id="10_vbrhh"]
 
@@ -21,20 +19,6 @@ albedo_color = Color(0.890196, 1, 0.890196, 1)
 albedo_color = Color(1, 0.482353, 0.505882, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s053r"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_wgpaj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nxpmy"]
-size = Vector3(1, 0.083, 0.183)
-
-[sub_resource type="Curve" id="Curve_d2ore"]
-_data = [Vector2(0.0233236, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.931487, 0.0090909), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o28y5"]
-render_priority = 0
-shader = ExtResource("3_bt5u1")
-shader_param/color = null
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuubb"]
 
@@ -71,56 +55,6 @@ material_override = SubResource("StandardMaterial3D_l0kuj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHolder/Player"]
 shape = SubResource("BoxShape3D_s053r")
 
-[node name="Shield" type="Node3D" parent="PlayerHolder/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.843178, 0, 0)
-script = ExtResource("2_8eg2t")
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="PlayerHolder/Player/Shield"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190103, 0, 0)
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="PlayerHolder/Player/Shield/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1.66683, 0, 0, 0, 1.66683, 0, 0, 0)
-radial_segments = 24
-rings = 24
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="PlayerHolder/Player/Shield/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1.64699, 0, 0, 0, 1.64699, 0.037832, 0, 0)
-operation = 2
-radial_segments = 24
-rings = 24
-
-[node name="Area3D" type="Area3D" parent="PlayerHolder/Player/Shield/CSGCombiner3D"]
-collision_layer = 0
-collision_mask = 1073741824
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHolder/Player/Shield/CSGCombiner3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1.70485, 0, 0, 0, 1.70485, 0, 0, 0)
-shape = SubResource("SphereShape3D_wgpaj")
-
-[node name="Sword" type="Node3D" parent="PlayerHolder/Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.578894, 0, 0)
-script = ExtResource("2_aqgrs")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="PlayerHolder/Player/Sword"]
-transform = Transform3D(2.79661, -0.549898, 0.936273, 0.521451, 2.94917, 0.174576, -0.95241, 3.01749e-07, 2.84481, 1.54496, 0.156147, -0.565131)
-size = Vector3(1, 0.0830681, 0.182516)
-
-[node name="Area3D" type="Area3D" parent="PlayerHolder/Player/Sword/CSGBox3D"]
-collision_layer = 0
-collision_mask = 2147483648
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHolder/Player/Sword/CSGBox3D/Area3D"]
-transform = Transform3D(1, 0, -2.98023e-08, -7.33162e-09, 1, -6.37073e-11, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_nxpmy")
-
-[node name="Trail" type="Node3D" parent="PlayerHolder/Player/Sword"]
-transform = Transform3D(0.932202, -0.183299, 0.312091, 0.173817, 0.983057, 0.0581921, -0.31747, -8.26325e-09, 0.948268, 1.58546, 0.156147, -0.638957)
-script = ExtResource("2_skyk2")
-width = 3.0
-width_curve = SubResource("Curve_d2ore")
-max_points = 50
-material = SubResource("ShaderMaterial_o28y5")
-
 [node name="BulletCollectArea" type="Area3D" parent="PlayerHolder/Player"]
 collision_layer = 0
 collision_mask = 1073741824
@@ -128,6 +62,50 @@ collision_mask = 1073741824
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHolder/Player/BulletCollectArea"]
 transform = Transform3D(1.04943, 0, 0, 0, 1.04943, 0, 0, 0, 1.04943, 0, 0, 0)
 shape = SubResource("BoxShape3D_uuubb")
+
+[node name="Sides" type="Node3D" parent="PlayerHolder/Player"]
+
+[node name="One" type="Position3D" parent="PlayerHolder/Player/Sides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/One"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
+
+[node name="Three" type="Position3D" parent="PlayerHolder/Player/Sides"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Three"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
+
+[node name="Sword" parent="PlayerHolder/Player/Sides/Three" instance=ExtResource("4_qmp51")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.078894, 0)
+
+[node name="Four" type="Position3D" parent="PlayerHolder/Player/Sides"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Four"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
+
+[node name="Shield" parent="PlayerHolder/Player/Sides/Four" instance=ExtResource("3_ia310")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.343178, 0)
+
+[node name="Five" type="Position3D" parent="PlayerHolder/Player/Sides"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
+
+[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Five"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
+
+[node name="Two" type="Position3D" parent="PlayerHolder/Player/Sides"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.5)
+
+[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Two"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
+
+[node name="Six" type="Position3D" parent="PlayerHolder/Player/Sides"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Six"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.255, 0)
@@ -204,6 +182,3 @@ directional_shadow_split_1 = 0.037
 directional_shadow_split_2 = 0.1
 directional_shadow_split_3 = 0.162
 directional_shadow_max_distance = 13.2
-
-[connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
-[connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]

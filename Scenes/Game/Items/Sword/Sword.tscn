@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://uhpr6hmvagxc"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Items/Sword/Sword.gd" id="1_q0s85"]
+[ext_resource type="Script" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gd" id="2_xixnt"]
+[ext_resource type="Shader" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gdshader" id="3_wu8ko"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxpmy"]
+size = Vector3(1, 0.083, 0.183)
+
+[sub_resource type="Curve" id="Curve_d2ore"]
+_data = [Vector2(0.0233236, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.931487, 0.0090909), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o28y5"]
+render_priority = 0
+shader = ExtResource("3_wu8ko")
+shader_param/color = null
+
+[node name="Sword" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.578894, 0, 0)
+script = ExtResource("1_q0s85")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(2.79661, -0.549898, 0.936273, 0.521451, 2.94917, 0.174576, -0.95241, 3.01749e-07, 2.84481, 1.54496, 0.156147, -0.565131)
+size = Vector3(1, 0.0830681, 0.182516)
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D"]
+collision_layer = 0
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D"]
+transform = Transform3D(1, 0, -2.98023e-08, -7.33162e-09, 1, -6.37073e-11, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_nxpmy")
+
+[node name="Trail" type="Node3D" parent="."]
+transform = Transform3D(0.932202, -0.183299, 0.312091, 0.173817, 0.983057, 0.0581921, -0.31747, -8.26325e-09, 0.948268, 1.58546, 0.156147, -0.638957)
+script = ExtResource("2_xixnt")
+width = 3.0
+width_curve = SubResource("Curve_d2ore")
+max_points = 50
+material = SubResource("ShaderMaterial_o28y5")
