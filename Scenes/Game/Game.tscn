@@ -169,6 +169,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 1.74465, 0.137355)
 [node name="UIViewport" type="CanvasLayer" parent="."]
 
 [node name="Equipment" parent="UIViewport" instance=ExtResource("9_1onw8")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u4c4i")

@@ -139,3 +139,4 @@ libraries = {
 }
 
 [connection signal="gui_input" from="CenterContainer/VBoxContainer/Control" to="." method="_on_startgame_gui_input"]
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/Control3" to="." method="_on_exit_gui_input"]
