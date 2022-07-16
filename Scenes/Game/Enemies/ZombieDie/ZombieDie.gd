@@ -2,6 +2,7 @@ extends RigidDynamicBody3D
 
 var positional_target := Vector3.ZERO
 const force_power = 10.0
+var can_attack = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,3 +20,12 @@ func _process(delta):
 	force.y = 0
 	force = force.normalized() * force_power * delta
 	apply_force(force)
+
+func disable_attack():
+	can_attack = false
+	var tween = create_tween()
+	tween.tween_interval(2.0)
+	tween.tween_callback(reset_attack)
+	
+func reset_attack():
+	can_attack = true

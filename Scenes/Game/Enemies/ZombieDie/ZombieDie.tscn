@@ -9,7 +9,7 @@ albedo_color = Color(0.360784, 1, 0.223529, 1)
 
 [node name="ZombieDie" type="RigidDynamicBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19722, 1.54155, 0)
-collision_layer = 2147483649
+collision_layer = 3221225473
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 0.01

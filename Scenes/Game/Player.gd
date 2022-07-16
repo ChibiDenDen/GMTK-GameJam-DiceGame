@@ -18,6 +18,9 @@ var item_scenes = {
 	"Wings": preload("res://Scenes/Game/Items/Wings/Wings.tscn"),
 }
 
+const bullet_class = preload("res://Scenes/Game/Enemies/ShooterDie/Bullet.gd")
+const zombie_class = preload("res://Scenes/Game/Enemies/ZombieDie/ZombieDie.gd")
+
 signal health_changed
 signal max_health_set
 
@@ -83,8 +86,13 @@ func _handle_move():
 	apply_force(force * max_force, force_origin)
 	
 func _handle_hits():
-	for bullet in $BulletCollectArea.get_overlapping_bodies():
-		bullet.queue_free()
+	for body in $BulletCollectArea.get_overlapping_bodies():
+		if body is bullet_class:
+			body.queue_free()
+		elif body is zombie_class and body.can_attack:
+			body.disable_attack()
+		else:
+			return
 		print_debug("HIT hp = ", hp)
 		hp -= 1
 		emit_signal("health_changed", hp)
