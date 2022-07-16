@@ -1,8 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://uhpr6hmvagxc"]
+[gd_scene load_steps=12 format=3 uid="uid://uhpr6hmvagxc"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Items/Sword/Sword.gd" id="1_q0s85"]
+[ext_resource type="ArrayMesh" uid="uid://qu5x0l7cd4li" path="res://Scenes/Game/Items/Sword/sword.obj" id="2_hetgx"]
 [ext_resource type="Script" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gd" id="2_xixnt"]
+[ext_resource type="Texture2D" uid="uid://d307wkidigeuk" path="res://Scenes/Game/Items/Sword/handle4.jpg" id="3_i8f0w"]
 [ext_resource type="Shader" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gdshader" id="3_wu8ko"]
+[ext_resource type="Texture2D" uid="uid://b81bqcrag1i1r" path="res://Scenes/Game/Items/Sword/handle2.jpg" id="4_k2ueb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87hkr"]
+albedo_texture = ExtResource("3_i8f0w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsvdo"]
+albedo_texture = ExtResource("4_k2ueb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxpmy"]
 size = Vector3(1, 0.083, 0.183)
@@ -20,8 +29,15 @@ shader_param/color = null
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_q0s85")
 
+[node name="Sword" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0371681, -0.0105916, -0.0812794, -0.00727333, 0.0884672, -0.0148543, 0.0816433, 0.0127031, 0.0356792, 3.00807, 0.470557, -1.1554)
+mesh = ExtResource("2_hetgx")
+surface_material_override/1 = SubResource("StandardMaterial3D_87hkr")
+surface_material_override/3 = SubResource("StandardMaterial3D_dsvdo")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(2.79661, -0.549898, 0.936273, 0.521451, 2.94917, 0.174576, -0.95241, 3.01749e-07, 2.84481, 1.54496, 0.156147, -0.565131)
+visible = false
 size = Vector3(1, 0.0830681, 0.182516)
 
 [node name="Area3D" type="Area3D" parent="CSGBox3D"]
