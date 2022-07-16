@@ -20,6 +20,8 @@ signal health_changed
 signal max_health_set
 
 var jump_allowed = true
+var max_jumps_allowed = 1
+var curr_jump = 0
 var hp = 10
 
 const jump_force = 7
@@ -53,11 +55,14 @@ func _process(delta):
 	
 	if jump_allowed:
 		var is_on_ground = test_move(transform, Vector3.DOWN*0.25)
-		if is_on_ground and Input.is_action_just_pressed("Jump"):
+		if is_on_ground:
+			curr_jump = 0
+		if Input.is_action_just_pressed("Jump") and (curr_jump < max_jumps_allowed or curr_jump == 0):
+			curr_jump += 1
 			apply_impulse(Vector3.UP*jump_force)
 			jump_allowed = false
 			var tween = create_tween()
-			tween.tween_interval(1.0)
+			tween.tween_interval(0.5)
 			tween.tween_callback(allow_jump)
 		
 	for bullet in $BulletCollectArea.get_overlapping_bodies():
