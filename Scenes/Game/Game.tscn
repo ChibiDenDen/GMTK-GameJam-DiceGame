@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=23 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
@@ -7,10 +7,12 @@
 [ext_resource type="Script" path="res://Scenes/Game/Items/Sword/Sword.gd" id="2_aqgrs"]
 [ext_resource type="Script" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gd" id="2_skyk2"]
 [ext_resource type="Shader" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gdshader" id="3_bt5u1"]
-[ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
 [ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
+[ext_resource type="Theme" uid="uid://bhwwphlt3c26n" path="res://Theme.tres" id="10_gpy6t"]
 [ext_resource type="Script" path="res://Scenes/Game/UIViewport.gd" id="10_m3rhi"]
+[ext_resource type="Script" path="res://Scenes/Game/UI/HPBar.gd" id="10_vbrhh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
 albedo_color = Color(0.890196, 1, 0.890196, 1)
@@ -176,6 +178,21 @@ script = ExtResource("10_m3rhi")
 [node name="Equipment" parent="UIViewport" instance=ExtResource("9_1onw8")]
 visible = false
 
+[node name="HPBar" type="ProgressBar" parent="UIViewport"]
+custom_minimum_size = Vector2(50, 0)
+offset_right = 401.0
+offset_bottom = 27.0
+theme = ExtResource("10_gpy6t")
+max_value = 10.0
+step = 1.0
+script = ExtResource("10_vbrhh")
+
+[node name="Label" type="Label" parent="UIViewport/HPBar"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("10_gpy6t")
+text = "HP"
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u4c4i")
 
@@ -187,3 +204,6 @@ directional_shadow_split_1 = 0.037
 directional_shadow_split_2 = 0.1
 directional_shadow_split_3 = 0.162
 directional_shadow_max_distance = 13.2
+
+[connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
+[connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]

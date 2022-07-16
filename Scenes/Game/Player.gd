@@ -2,15 +2,17 @@ extends RigidDynamicBody3D
 
 @onready var camera : Camera3D = get_parent().find_child("Camera3D")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal health_changed
+signal max_health_set
 
 var jump_allowed = true
 var hp = 10
 
 const jump_force = 7
 const max_torque = 7
+
+func _ready():
+	emit_signal("max_health_set", 10, true)
 
 func allow_jump():
 	jump_allowed = true
@@ -42,8 +44,9 @@ func _process(delta):
 		
 	for bullet in $BulletCollectArea.get_overlapping_bodies():
 		bullet.queue_free()
-		print_debug("HIT", hp)
+		print_debug("HIT hp = ", hp)
 		hp -= 1
+		emit_signal("health_changed", hp)
 		
 	if hp <= 0:
 		# End game screen
