@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://by7gsgqnne755"]
+[gd_scene load_steps=3 format=3 uid="uid://by7gsgqnne755"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Items/Wings/Wings.gd" id="1_gl5f2"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pvcyq"]
+height = 0.431
+radius = 0.093
+
 [node name="Wings" type="Node3D"]
+transform = Transform3D(0.916586, 0.0163772, -0.399503, -0.399649, 0.00677998, -0.916643, -0.0123035, 0.999843, 0.0127596, 0.0443671, 0.148871, -0.194206)
 script = ExtResource("1_gl5f2")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141827, 0.0385702, 0.120536)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+radius = 0.093
+height = 0.431
+sides = 15
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.152741, -0.000588566, -0.0830763)
+radius = 0.093
+height = 0.431
+sides = 15
+
+[node name="Area3D" type="Area3D" parent="CSGCombiner3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000690699, 0.000768676, 0.00234635)
+shape = SubResource("CylinderShape3D_pvcyq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CSGCombiner3D/Area3D"]
+transform = Transform3D(0.998559, 0.00822627, -0.0530331, -0.00823786, 0.999966, 0, 0.0530313, 0.000436879, 0.998593, 0.155112, 0.00156093, -0.0820684)
+shape = SubResource("CylinderShape3D_pvcyq")
