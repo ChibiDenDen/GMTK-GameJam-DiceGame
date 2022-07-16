@@ -25,6 +25,10 @@ run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
 config/icon="res://icon.png"
 
+[autoload]
+
+Inventory="*res://Systems/Inventory.gd"
+
 [input]
 
 Jump={

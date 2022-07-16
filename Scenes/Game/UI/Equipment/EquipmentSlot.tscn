@@ -24,10 +24,13 @@ anchor_bottom = 1.0
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
+metadata/_edit_layout_mode = 1
 
 [node name="ColorRect2" type="ColorRect" parent="MarginContainer"]
 offset_left = 1.0
@@ -36,20 +39,31 @@ offset_right = 79.0
 offset_bottom = 79.0
 color = Color(0.811765, 0.811765, 0.811765, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer"]
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 79.0
 offset_bottom = 79.0
 
-[node name="One" type="Control" parent="MarginContainer/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Control/MarginContainer"]
+offset_right = 78.0
+offset_bottom = 78.0
+
+[node name="One" type="Control" parent="MarginContainer/Control/MarginContainer/CenterContainer"]
 visible = false
 offset_left = 39.0
 offset_top = 39.0
 offset_right = 39.0
 offset_bottom = 39.0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/One"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/One"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -65,14 +79,14 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="Two" type="Control" parent="MarginContainer/CenterContainer"]
+[node name="Two" type="Control" parent="MarginContainer/Control/MarginContainer/CenterContainer"]
 visible = false
 offset_left = 39.0
 offset_top = 39.0
 offset_right = 39.0
 offset_bottom = 39.0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Two"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Two"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -88,7 +102,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Two"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Two"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -104,14 +118,14 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="Three" type="Control" parent="MarginContainer/CenterContainer"]
+[node name="Three" type="Control" parent="MarginContainer/Control/MarginContainer/CenterContainer"]
 visible = false
 offset_left = 39.0
 offset_top = 39.0
 offset_right = 39.0
 offset_bottom = 39.0
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Three"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Three"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -127,7 +141,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Three"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Three"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -143,7 +157,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Three"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Three"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -159,14 +173,14 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="Four" type="Control" parent="MarginContainer/CenterContainer"]
+[node name="Four" type="Control" parent="MarginContainer/Control/MarginContainer/CenterContainer"]
 visible = false
 offset_left = 39.0
 offset_top = 39.0
 offset_right = 39.0
 offset_bottom = 39.0
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Four"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -182,7 +196,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Four"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -198,7 +212,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Four"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -214,7 +228,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Four"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -230,14 +244,14 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="Five" type="Control" parent="MarginContainer/CenterContainer"]
+[node name="Five" type="Control" parent="MarginContainer/Control/MarginContainer/CenterContainer"]
 visible = false
 offset_left = 39.0
 offset_top = 39.0
 offset_right = 39.0
 offset_bottom = 39.0
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Five"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -253,7 +267,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Five"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -269,7 +283,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Five"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -285,7 +299,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Five"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -301,7 +315,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Five"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -317,14 +331,14 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="Six" type="Control" parent="MarginContainer/CenterContainer"]
+[node name="Six" type="Control" parent="MarginContainer/Control/MarginContainer/CenterContainer"]
 visible = false
 offset_left = 39.0
 offset_top = 39.0
 offset_right = 39.0
 offset_bottom = 39.0
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Six"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -340,7 +354,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Six"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -356,7 +370,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Six"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -372,7 +386,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Six"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -388,7 +402,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Six"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -404,7 +418,7 @@ grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/MarginContainer/CenterContainer/Six"]
 material = SubResource("ShaderMaterial_lx0j1")
 custom_minimum_size = Vector2(16, 16)
 anchor_left = 0.5
@@ -419,3 +433,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("Texture2D_x7woh")
 metadata/_edit_layout_mode = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 79.0
+offset_bottom = 79.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer2"]
+custom_minimum_size = Vector2(60, 60)
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 69.0
+offset_bottom = 69.0
+ignore_texture_size = true
+stretch_mode = 5

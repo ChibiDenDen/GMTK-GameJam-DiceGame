@@ -3,12 +3,12 @@ extends Control
 @export var number: int = 1
 
 @onready var sides = [
-	$MarginContainer/CenterContainer/One,
-	$MarginContainer/CenterContainer/Two,
-	$MarginContainer/CenterContainer/Three,
-	$MarginContainer/CenterContainer/Four,
-	$MarginContainer/CenterContainer/Five,
-	$MarginContainer/CenterContainer/Six]
+	$MarginContainer/Control/MarginContainer/CenterContainer/One,
+	$MarginContainer/Control/MarginContainer/CenterContainer/Two,
+	$MarginContainer/Control/MarginContainer/CenterContainer/Three,
+	$MarginContainer/Control/MarginContainer/CenterContainer/Four,
+	$MarginContainer/Control/MarginContainer/CenterContainer/Five,
+	$MarginContainer/Control/MarginContainer/CenterContainer/Six]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func set_item(item_name):
+	var icon = load("res://Scenes/Game/Items/%s/Icon.png" % item_name)
+	$MarginContainer/CenterContainer2/TextureRect.texture = icon
+	$MarginContainer/Control/MarginContainer.scale = Vector2.ONE * 0.4

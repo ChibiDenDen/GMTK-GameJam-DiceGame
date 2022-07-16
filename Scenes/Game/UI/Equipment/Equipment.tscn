@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpcymf0run3gy"]
+[gd_scene load_steps=5 format=3 uid="uid://bpcymf0run3gy"]
 
+[ext_resource type="Script" path="res://Scenes/Game/UI/Equipment/Equipment.gd" id="1_8x5hl"]
 [ext_resource type="PackedScene" uid="uid://bm07srnyxadct" path="res://Scenes/Game/UI/Equipment/Disabled.tscn" id="1_ab21i"]
 [ext_resource type="PackedScene" uid="uid://xexdems0wwj6" path="res://Scenes/Game/UI/Equipment/EquipmentSlot.tscn" id="2_gadda"]
 [ext_resource type="PackedScene" uid="uid://ca7ev7rljpehm" path="res://Scenes/Game/UI/Equipment/InventorySlot.tscn" id="3_gqxv6"]
 
-[node name="Equipment" type="Control"]
+[node name="Equipment" type="Control" node_paths=PackedStringArray("inventory_slots_grid", "equipment_slots_grid")]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource("1_8x5hl")
+inventory_slots_grid = NodePath("CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Control/MarginContainer/GridContainer2")
+equipment_slots_grid = NodePath("CenterContainer/PanelContainer/MarginContainer/HBoxContainer/GridContainer")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -146,11 +150,13 @@ columns = 4
 [node name="InventorySlot" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Control/MarginContainer/GridContainer2" instance=ExtResource("3_gqxv6")]
 offset_right = 76.0
 offset_bottom = 76.0
+item = "Sword"
 
 [node name="InventorySlot2" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Control/MarginContainer/GridContainer2" instance=ExtResource("3_gqxv6")]
 offset_left = 78.0
 offset_right = 154.0
 offset_bottom = 76.0
+item = "Shield"
 
 [node name="InventorySlot3" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Control/MarginContainer/GridContainer2" instance=ExtResource("3_gqxv6")]
 offset_left = 156.0
