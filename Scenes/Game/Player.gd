@@ -37,7 +37,7 @@ var was_on_ground = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setup_items()
-	emit_signal("max_health_set", 10, true)
+	emit_signal("max_health_set", hp, true)
 
 func allow_jump():
 	jump_allowed = true
