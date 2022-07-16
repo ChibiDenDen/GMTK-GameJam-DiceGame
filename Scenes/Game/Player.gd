@@ -74,3 +74,20 @@ func _process(delta):
 
 func get_transformed_aabb() -> AABB:
 	return $CSGBox3D.get_transformed_aabb()
+	
+func set_item(item_name, side_index):
+	var side = sides[side_index]
+	var item : Node3D = item_scenes[item_name].instantiate()
+	side.add_child(item)
+
+func setup_items():
+	for side in sides:
+		for child in side.get_children():
+			side.remove_child(child)
+	var i = -1
+	for equipment in Inventory.equipment:
+		i += 1
+		if equipment == null:
+			continue
+		set_item(equipment, i)
+
