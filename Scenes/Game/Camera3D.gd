@@ -19,13 +19,13 @@ func _process(delta):
 		around_player = around_player.rotated(Vector3.UP, deg2rad(-90))
 	position_target = around_player + player.global_position
 	position_target.y = 6
-	global_position = global_position.lerp(position_target, 5*delta)
+	global_position = global_position.lerp(position_target, 15*delta)
 	
 	var player_aabb : AABB = player.get_transformed_aabb()
 	var target_look_at = player_aabb.position + player_aabb.size/2
 	target_look_at.y = player_aabb.position.y
 	target_look_at.y = snapped(target_look_at.y, 0.5)
 	if last_look_at:
-		target_look_at = last_look_at.lerp(target_look_at, delta)
+		target_look_at = last_look_at.lerp(target_look_at, 5*delta)
 	last_look_at = target_look_at
 	look_at(target_look_at + Vector3.UP * 2)
