@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=34 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="14_acnhy"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="14_gu2mo"]
 [ext_resource type="FontFile" uid="uid://b01bb8eqxd1x" path="res://Fonts/PressStart2P-Regular.ttf" id="15_ybrsi"]
+[ext_resource type="Script" path="res://Scenes/Game/Message.gd" id="18_3dpu4"]
 [ext_resource type="PackedScene" uid="uid://nulnhn1hj4cb" path="res://Scenes/Game/Pickables/Pickable.tscn" id="18_vqhrh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
@@ -70,6 +71,44 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_ruhax"),
 "ScaleLoop": SubResource("Animation_udevw")
+}
+
+[sub_resource type="Animation" id="Animation_jxqai"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/normal_font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [18, 23, 13]
+}
+
+[sub_resource type="Animation" id="Animation_vlqf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/normal_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huuce"]
+_data = {
+"Idle": SubResource("Animation_jxqai"),
+"RESET": SubResource("Animation_vlqf5")
 }
 
 [sub_resource type="Environment" id="Environment_u4c4i"]
@@ -531,6 +570,31 @@ libraries = {
 "": SubResource("AnimationLibrary_lt0vl")
 }
 
+[node name="CenterContainer" type="CenterContainer" parent="UIViewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Message" type="RichTextLabel" parent="UIViewport/CenterContainer"]
+custom_minimum_size = Vector2(800, 10)
+offset_left = 112.0
+offset_top = 286.0
+offset_right = 912.0
+offset_bottom = 314.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("15_ybrsi")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]asdasdasdasd[/center]"
+fit_content_height = true
+script = ExtResource("18_3dpu4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIViewport/CenterContainer/Message"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_huuce")
+}
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u4c4i")
 
@@ -557,9 +621,9 @@ item_name = "Sword"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9765, 3.652, -34.3808)
 item_name = "Shield"
 
-[node name="Shield2" parent="Pickables" instance=ExtResource("18_vqhrh")]
+[node name="Boots" parent="Pickables" instance=ExtResource("18_vqhrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32459, 4.37, -19.5411)
-item_name = "ShieldBoots"
+item_name = "Boots"
 
 [node name="Wings" parent="Pickables" instance=ExtResource("18_vqhrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.643, 1.51375, 17.1744)
