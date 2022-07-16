@@ -28,15 +28,26 @@ var hp = 10
 const jump_force = 7
 const max_torque = 7
 
+var was_on_ground = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setup_items()
 	emit_signal("max_health_set", 10, true)
 
-
 func allow_jump():
 	jump_allowed = true
+
+var movement_sounds = [
+	#preload("res://Scenes/Game/Player/SFX/Movement/collision_paper_soft_01.wav"),
+	#preload("res://Scenes/Game/Player/SFX/Movement/collision_paper_soft_02.wav"),
+	preload("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_01.wav"),
+	preload("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_02.wav"),
+]
+
+func play_movement_sound():
+	$MovementAudioPlayer.stream = movement_sounds[randi() % movement_sounds.size()]
+	$MovementAudioPlayer.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,8 +66,11 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_A):
 		apply_force(forward.rotated(Vector3.UP, deg2rad(90)), force_origin)
 	
+	var is_on_ground = test_move(transform, Vector3.DOWN*0.25)
+	if is_on_ground and not was_on_ground:
+		play_movement_sound()
+	was_on_ground = is_on_ground
 	if jump_allowed:
-		var is_on_ground = test_move(transform, Vector3.DOWN*0.25)
 		if is_on_ground:
 			curr_jump = 0
 		if Input.is_action_just_pressed("Jump") and (curr_jump < max_jumps_allowed or curr_jump == 0):
