@@ -68,23 +68,14 @@ shape = SubResource("BoxShape3D_uuubb")
 [node name="One" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/One"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
-
 [node name="Three" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.5, 0, 0)
 
-[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Three"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
-
 [node name="Sword" parent="PlayerHolder/Player/Sides/Three" instance=ExtResource("4_qmp51")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.078894, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Four" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, 0, 0)
-
-[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Four"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
 
 [node name="Shield" parent="PlayerHolder/Player/Sides/Four" instance=ExtResource("3_ia310")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.343178, 0)
@@ -92,20 +83,11 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.3
 [node name="Five" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
 
-[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Five"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
-
 [node name="Two" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.5)
 
-[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Two"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
-
 [node name="Six" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="Forward" type="Position3D" parent="PlayerHolder/Player/Sides/Six"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541785, 0)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.255, 0)

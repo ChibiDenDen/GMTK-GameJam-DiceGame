@@ -2,17 +2,29 @@ extends RigidDynamicBody3D
 
 @onready var camera : Camera3D = get_parent().find_child("Camera3D")
 
-signal health_changed
-signal max_health_set
+@onready var sides = [
+	$Sides/One,
+	$Sides/Two,
+	$Sides/Three,
+	$Sides/Four,
+	$Sides/Five,
+	$Sides/Six,
+]
+
+var item_scenes = {
+	"Sword": preload("res://Scenes/Game/Items/Sword/Sword.tscn"),
+	"Shield": preload("res://Scenes/Game/Items/Shield/Shield.tscn"),
+}
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	setup_items()
 
 var jump_allowed = true
 var hp = 10
 
 const jump_force = 7
 const max_torque = 7
-
-func _ready():
-	emit_signal("max_health_set", 10, true)
 
 func allow_jump():
 	jump_allowed = true
@@ -44,9 +56,8 @@ func _process(delta):
 		
 	for bullet in $BulletCollectArea.get_overlapping_bodies():
 		bullet.queue_free()
-		print_debug("HIT hp = ", hp)
+		print_debug("HIT", hp)
 		hp -= 1
-		emit_signal("health_changed", hp)
 		
 	if hp <= 0:
 		# End game screen
@@ -55,3 +66,19 @@ func _process(delta):
 
 func get_transformed_aabb() -> AABB:
 	return $CSGBox3D.get_transformed_aabb()
+
+func set_item(item_name, side_index):
+	var side = sides[side_index]
+	var item : Node3D = item_scenes[item_name].instantiate()
+	side.add_child(item)
+
+func setup_items():
+	for side in sides:
+		for child in side.get_children():
+			side.remove_child(child)
+	var i = -1
+	for equipment in Inventory.equipment:
+		i += 1
+		if equipment == null:
+			continue
+		set_item(equipment, i)
