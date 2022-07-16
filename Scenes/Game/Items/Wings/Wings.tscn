@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://by7gsgqnne755"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Items/Wings/Wings.gd" id="1_gl5f2"]
+
+[node name="Wings" type="Node3D"]
+script = ExtResource("1_gl5f2")

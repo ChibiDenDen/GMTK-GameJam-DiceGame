@@ -168,6 +168,7 @@ item = "Boots"
 offset_left = 234.0
 offset_right = 310.0
 offset_bottom = 76.0
+item = "Wings"
 
 [node name="InventorySlot5" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/Control/MarginContainer/GridContainer2" instance=ExtResource("3_gqxv6")]
 offset_top = 78.0

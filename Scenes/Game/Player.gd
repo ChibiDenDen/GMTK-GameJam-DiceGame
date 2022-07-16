@@ -15,6 +15,7 @@ var item_scenes = {
 	"Sword": preload("res://Scenes/Game/Items/Sword/Sword.tscn"),
 	"Shield": preload("res://Scenes/Game/Items/Shield/Shield.tscn"),
 	"Boots": preload("res://Scenes/Game/Items/Boots/Boots.tscn"),
+	"Wings": preload("res://Scenes/Game/Items/Wings/Wings.tscn"),
 }
 
 signal health_changed
@@ -22,7 +23,6 @@ signal max_health_set
 
 var jump_allowed = true
 var is_on_ground = false
-var max_jumps_allowed = 1
 var curr_jump = 0
 var hp = 10
 
@@ -93,10 +93,13 @@ func _handle_hits():
 		get_tree().change_scene_to(load("res://Scenes/main_menu.tscn"))
 		
 func _handle_jump():
+	var wings = find_child("Wings", true, false)
+	var max_jumps_allowed = 1 + wings.additional_jumps if wings else 1
 	if jump_allowed:
+		var is_on_ground = test_move(transform, Vector3.DOWN*0.25)
 		if is_on_ground:
 			curr_jump = 0
-		if Input.is_action_just_pressed("Jump") and (curr_jump < max_jumps_allowed or curr_jump == 0):
+		if Input.is_action_just_pressed("Jump") and (curr_jump < max_jumps_allowed):
 			curr_jump += 1
 			apply_impulse(Vector3.UP*jump_force)
 			jump_allowed = false
