@@ -1,0 +1,21 @@
+extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_boss_arena_body_entered(body):
+	$BgMusicBoss.play() 
+	$BgMusicNormal.stop()
+
+
+func _on_boss_arena_body_exited(body):
+	$BgMusicBoss.stop()
+	$BgMusicNormal.play()
