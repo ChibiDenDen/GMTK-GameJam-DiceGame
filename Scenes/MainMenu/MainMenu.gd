@@ -13,7 +13,7 @@ func _process(delta):
 
 func _on_startgame_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
-		get_tree().change_scene_to(load("res://Scenes/Game/Game.tscn"))
+		get_tree().change_scene_to(load("res://Scenes/LowResGame/GameLowRes.tscn"))
 
 
 func _on_exit_gui_input(event):

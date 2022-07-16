@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmjdsurj308a0"]
+
+[ext_resource type="Script" path="res://Scenes/LowResGame/GameLowRes.gd" id="1_rh13x"]
+[ext_resource type="PackedScene" uid="uid://b6or7sluan31c" path="res://Scenes/Game/Game.tscn" id="2_guthx"]
+[ext_resource type="Shader" path="res://Scenes/LowResGame/GameLowRes.gdshader" id="3_1e7bg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhadu"]
+shader = ExtResource("3_1e7bg")
+shader_param/aberration_amount = 0.73
+shader_param/boost = 1.2
+shader_param/corner_color = Quaternion(0, 0, 0, 1)
+shader_param/curvature_x_amount = 6.0
+shader_param/curvature_y_amount = 4.0
+shader_param/horizontal_scan_lines_amount = 320.0
+shader_param/horizontal_scan_lines_opacity = 1.0
+shader_param/screen_size = Vector2(320, 180)
+shader_param/show_curvature = true
+shader_param/show_horizontal_scan_lines = true
+shader_param/show_vertical_scan_lines = false
+shader_param/show_vignette = true
+shader_param/vertical_scan_lines_amount = 320.0
+shader_param/vertical_scan_lines_opacity = 1.0
+shader_param/vignette_opacity = 0.2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3c2t2"]
+viewport_path = NodePath("SubViewport")
+
+[node name="GameLowRes" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_rh13x")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(320, 240)
+render_target_clear_mode = 2
+render_target_update_mode = 4
+
+[node name="Game" parent="SubViewport" instance=ExtResource("2_guthx")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uhadu")
+scale = Vector2(4, 4)
+texture = SubResource("ViewportTexture_3c2t2")
+centered = false
+region_rect = Rect2(0, 0, 320, 240)
