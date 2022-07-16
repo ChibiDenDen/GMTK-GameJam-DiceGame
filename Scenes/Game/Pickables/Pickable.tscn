@@ -136,7 +136,6 @@ inner_radius = 0.535
 outer_radius = 0.641
 
 [node name="CSGTorus3D3" type="CSGTorus3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_68ida")
 inner_radius = 0.783
 outer_radius = 0.939

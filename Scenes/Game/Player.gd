@@ -27,7 +27,7 @@ signal max_health_set
 var jump_allowed = true
 var is_on_ground = false
 var curr_jump = 0
-var hp = 100
+var hp = 10
 
 const jump_force = 7
 const max_torque = 7
@@ -43,10 +43,8 @@ func allow_jump():
 	jump_allowed = true
 
 var movement_sounds = [
-	#preload("res://Scenes/Game/Player/SFX/Movement/collision_paper_soft_01.wav"),
-	#preload("res://Scenes/Game/Player/SFX/Movement/collision_paper_soft_02.wav"),
-	preload("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_01.wav"),
-	preload("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_02.wav"),
+	load("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_01.wav"),
+	load("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_02.wav"),
 ]
 
 func play_movement_sound():

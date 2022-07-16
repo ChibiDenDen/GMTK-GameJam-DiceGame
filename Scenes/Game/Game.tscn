@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/Items/Boots/Boots.gd" id="4_bi0hi"]
 [ext_resource type="PackedScene" uid="uid://uhpr6hmvagxc" path="res://Scenes/Game/Items/Sword/Sword.tscn" id="4_qmp51"]
 [ext_resource type="PackedScene" uid="uid://by7gsgqnne755" path="res://Scenes/Game/Items/Wings/Wings.tscn" id="6_obj7a"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
+[ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
 [ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
 [ext_resource type="Theme" uid="uid://bhwwphlt3c26n" path="res://Theme.tres" id="10_gpy6t"]
@@ -286,7 +286,7 @@ size = Vector3(88, 30, 20)
 [node name="PlayerHolder" type="Node3D" parent="."]
 
 [node name="Player" type="RigidDynamicBody3D" parent="PlayerHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2952, 6.54355, -5.79976)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.037, 1.02322, 16.6001)
 collision_layer = 134217729
 script = ExtResource("1_e1tbc")
 
