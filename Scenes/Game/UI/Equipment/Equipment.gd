@@ -11,8 +11,21 @@ var selected : Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	reload()
+	Inventory.connect("reload", reload)
+
+func reload():
+	var j = 0
 	for inventory_slot in inventory_slots_grid.get_children():
+		if j < Inventory.unlocked_items.size():
+			inventory_slot.item = Inventory.unlocked_items[j]
+		else:
+			inventory_slot.item = ""
+		j += 1
+		inventory_slot.setup()
 		inventory_slot.connect("gui_input", inventory_slot_gui, [inventory_slot])
+		if inventory_slot.item != "":
+			inventory_slot.modulate = Color.WHITE
 
 	for equipment_slot in equipment_slots_grid.get_children():
 		var equipment_slot_name : String = equipment_slot.name

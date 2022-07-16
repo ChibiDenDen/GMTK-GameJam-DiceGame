@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=30 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
 [ext_resource type="Script" path="res://Scenes/Game/Camera3D.gd" id="2_2y024"]
+[ext_resource type="Shader" path="res://Scenes/Game/Invisible.gdshader" id="2_qslig"]
 [ext_resource type="PackedScene" uid="uid://ds27xo3cblttw" path="res://Scenes/Game/Items/Shield/Shield.tscn" id="3_ia310"]
 [ext_resource type="Script" path="res://Scenes/Game/Items/Boots/Boots.gd" id="4_bi0hi"]
 [ext_resource type="PackedScene" uid="uid://uhpr6hmvagxc" path="res://Scenes/Game/Items/Sword/Sword.tscn" id="4_qmp51"]
@@ -16,9 +17,18 @@
 [ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="14_acnhy"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="14_gu2mo"]
 [ext_resource type="FontFile" uid="uid://b01bb8eqxd1x" path="res://Fonts/PressStart2P-Regular.ttf" id="15_ybrsi"]
+[ext_resource type="PackedScene" uid="uid://nulnhn1hj4cb" path="res://Scenes/Game/Pickables/Pickable.tscn" id="18_vqhrh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
-albedo_color = Color(0.890196, 1, 0.890196, 1)
+albedo_color = Color(0.203922, 0.54902, 0.192157, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqrbk"]
+render_priority = 0
+shader = ExtResource("2_qslig")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2qu5"]
+shading_mode = 0
+albedo_color = Color(0.529412, 0.807843, 0.921569, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0kuj"]
 albedo_color = Color(1, 0.482353, 0.505882, 1)
@@ -71,22 +81,139 @@ glow_blend_mode = 0
 [node name="Game" type="Node3D"]
 script = ExtResource("1_qop40")
 
-[node name="World" type="Node3D" parent="."]
+[node name="World" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="CSGBox3D" type="CSGBox3D" parent="World"]
 use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(500, 1, 500)
+material = SubResource("StandardMaterial3D_dj0h4")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0)
+material_override = SubResource("ShaderMaterial_pqrbk")
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(500, 1, 500)
 material = SubResource("StandardMaterial3D_dj0h4")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -40)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(29, 1, 29)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -40)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(8, 1, 18)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -40)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(29, 4, 29)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1, -40)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(29, 6, 29)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.59672, 17)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(50, 3.97072, 29)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 7, 3.50115)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(42, 6, 2)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 7, 19.5011)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2, 6, 34)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 7, 19.5011)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(2, 6, 34)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3, -12)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(6, 2, 29)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54808, 3.50627, -18.9952)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(6, 1.02996, 5.23894)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, -68)
+material_override = SubResource("StandardMaterial3D_u2qu5")
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(112, 30, 25.472)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, 79)
+material_override = SubResource("StandardMaterial3D_u2qu5")
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(122, 30, 94)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 71, 15, -11)
+material_override = SubResource("StandardMaterial3D_u2qu5")
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(88, 30, 52)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -44, 15, -11)
+material_override = SubResource("StandardMaterial3D_u2qu5")
+cast_shadow = 0
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(88, 30, 20)
 
 [node name="PlayerHolder" type="Node3D" parent="."]
 
 [node name="Player" type="RigidDynamicBody3D" parent="PlayerHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.255, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4134, 1.255, 17.6924)
+collision_layer = 134217729
 script = ExtResource("1_e1tbc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="PlayerHolder/Player"]
@@ -141,7 +268,7 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -0.
 unit_db = -10.888
 
 [node name="Camera3D" type="Camera3D" parent="PlayerHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.255, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2472, 6.255, 17.4692)
 current = true
 script = ExtResource("2_2y024")
 
@@ -151,13 +278,94 @@ script = ExtResource("2_2y024")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5807, 1.54155, 0)
 
 [node name="ZombieDie2" parent="Enemies" instance=ExtResource("8_85blo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17624, 1.54155, 8.21433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17624, 1.54155, -6.78567)
 
 [node name="ZombieDie3" parent="Enemies" instance=ExtResource("8_85blo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7508, 1.54155, 1.2813)
 
+[node name="ZombieDie28" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0831, 6.92549, 14.5396)
+
+[node name="ZombieDie29" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55118, 6.92549, 21.8711)
+
+[node name="ZombieDie30" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8638, 6.92549, 21.8711)
+
+[node name="ZombieDie31" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8638, 6.92549, 9.40781)
+
+[node name="ZombieDie32" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37616, 6.92549, 9.40781)
+
+[node name="ZombieDie33" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0456138, 6.92549, 14.9726)
+
 [node name="ZombieDie4" parent="Enemies" instance=ExtResource("8_85blo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08718, 1.54155, 4.14884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08718, 1.54155, -10.8512)
+
+[node name="ZombieDie22" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.873, 1.54155, -10.8512)
+
+[node name="ZombieDie23" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.873, 1.54155, -18.6796)
+
+[node name="ZombieDie24" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1373, 1.54155, -18.6796)
+
+[node name="ZombieDie9" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08718, 6.54155, -31.8512)
+
+[node name="ZombieDie10" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08718, 6.54155, -50.8512)
+
+[node name="ZombieDie11" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0872, 9.54155, -50.8512)
+
+[node name="ZombieDie12" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8574, 9.54155, -46.087)
+
+[node name="ZombieDie13" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8574, 9.54155, -35.6883)
+
+[node name="ZombieDie14" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8745, 9.54155, -43.8677)
+
+[node name="ZombieDie15" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6249, 3.65021, -43.8677)
+
+[node name="ZombieDie16" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9122, 3.65021, -50.0948)
+
+[node name="ZombieDie19" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5898, 3.65021, -40.1595)
+
+[node name="ZombieDie17" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0669, 3.65021, -43.8677)
+
+[node name="ZombieDie18" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0669, 3.65021, -29.3027)
+
+[node name="ZombieDie20" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9631, 3.65021, -32.7421)
+
+[node name="ZombieDie21" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9631, 3.65021, -17.3939)
+
+[node name="ZombieDie25" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9631, 3.65021, 6.12106)
+
+[node name="ZombieDie26" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9631, 3.65021, 24.5188)
+
+[node name="ZombieDie27" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0754, 3.65021, 14.3753)
+
+[node name="ZombieDie8" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50682, 1.54155, -0.201244)
+
+[node name="ZombieDie7" parent="Enemies" instance=ExtResource("8_85blo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2286, 4.49657, -0.571779)
 
 [node name="ZombieDie5" parent="Enemies" instance=ExtResource("8_85blo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.97025, 2.95127, -14.4781)
@@ -168,19 +376,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34825, 2.95127, -14.4698)
 [node name="ShooterDie" parent="Enemies" instance=ExtResource("8_6crlg")]
 
 [node name="ShooterDie2" parent="Enemies" instance=ExtResource("8_6crlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6027, 1.54155, 6.32814)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3583, 1.54155, -5.0798)
 
 [node name="ShooterDie3" parent="Enemies" instance=ExtResource("8_6crlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669722, 3.21339, -12.4749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669722, 3.21339, -12.7712)
+
+[node name="ShooterDie15" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25649, 5.83242, 7.86071)
+
+[node name="ShooterDie13" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25649, 7.12183, 7.86071)
+
+[node name="ShooterDie14" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25649, 8.41007, 7.86071)
+
+[node name="ShooterDie16" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25649, 5.46322, 22.666)
+
+[node name="ShooterDie17" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25649, 6.75263, 22.666)
+
+[node name="ShooterDie18" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25649, 8.04087, 22.666)
+
+[node name="ShooterDie11" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1285, 6.67678, -28.9934)
 
 [node name="ShooterDie4" parent="Enemies" instance=ExtResource("8_6crlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03803, 3.21339, -25.8183)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03803, 3.21339, -22.3305)
+
+[node name="ShooterDie7" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.9561, 4.67585, -1.30922)
+
+[node name="ShooterDie8" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.9561, 5.86554, -1.30922)
+
+[node name="ShooterDie9" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3797, 4.79686, -1.30922)
+
+[node name="ShooterDie10" parent="Enemies" instance=ExtResource("8_6crlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3797, 5.98656, -1.30922)
 
 [node name="ShooterDie5" parent="Enemies" instance=ExtResource("8_6crlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 3.21339, 0.137355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1156, 5.85981, -52.1305)
 
 [node name="ShooterDie6" parent="Enemies" instance=ExtResource("8_6crlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 1.74465, 0.137355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1156, 4.39107, -52.1305)
 
 [node name="UIViewport" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -301,6 +542,28 @@ directional_shadow_split_1 = 0.037
 directional_shadow_split_2 = 0.1
 directional_shadow_split_3 = 0.162
 directional_shadow_max_distance = 13.2
+
+[node name="Pickables" type="Node3D" parent="."]
+
+[node name="Sword" parent="Pickables" instance=ExtResource("18_vqhrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9585, 1.92894, 17.7954)
+item_name = "Sword"
+
+[node name="Sword2" parent="Pickables" instance=ExtResource("18_vqhrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3116, 1.92894, -20.417)
+item_name = "Sword"
+
+[node name="Shield" parent="Pickables" instance=ExtResource("18_vqhrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9765, 3.652, -34.3808)
+item_name = "Shield"
+
+[node name="Shield2" parent="Pickables" instance=ExtResource("18_vqhrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32459, 4.37, -19.5411)
+item_name = "ShieldBoots"
+
+[node name="Wings" parent="Pickables" instance=ExtResource("18_vqhrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.643, 1.51375, 17.1744)
+item_name = "Wings"
 
 [connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
 [connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]

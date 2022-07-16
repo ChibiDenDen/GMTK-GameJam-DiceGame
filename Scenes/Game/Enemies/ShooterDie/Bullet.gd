@@ -9,4 +9,7 @@ func _ready():
 	tween.tween_callback(queue_free)
 
 func _process(delta):
+	if $Area3D.get_overlapping_bodies().size() != 0:
+		queue_free()
+
 	global_position += velocity*delta

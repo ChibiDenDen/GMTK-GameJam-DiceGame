@@ -2,8 +2,7 @@ extends Control
 
 @export var item : String = ""
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func setup():
 	if item == "":
 		modulate = Color.GRAY
 		return

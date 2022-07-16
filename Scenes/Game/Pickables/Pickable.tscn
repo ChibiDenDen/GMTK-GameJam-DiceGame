@@ -1,0 +1,156 @@
+[gd_scene load_steps=10 format=3 uid="uid://nulnhn1hj4cb"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Pickables/Pickable.gd" id="1_ipw7w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7oxi0"]
+albedo_color = Color(1, 0.558888, 0.727482, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1x72"]
+albedo_color = Color(0.396078, 0.584314, 1, 1)
+metallic = 0.98
+metallic_specular = 0.91
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_miof0"]
+albedo_color = Color(0.54902, 0, 0.721569, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68ida"]
+albedo_color = Color(1, 0.0745098, 0.223529, 1)
+
+[sub_resource type="Animation" id="Animation_x8owt"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.8, 1, 0, 0.25, 0, 1.7, 1, 0, -0.05, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGTorus3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGTorus3D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(7.33038, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGTorus3D3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.942478, -4.03171, 0), Vector3(2.30383, -4.08407, 3.56047)]
+}
+
+[sub_resource type="Animation" id="Animation_je1ii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGTorus3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGTorus3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGTorus3D3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s3f7a"]
+_data = {
+"Idle": SubResource("Animation_x8owt"),
+"RESET": SubResource("Animation_je1ii")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iygay"]
+radius = 0.824791
+
+[node name="Pickable" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147156, 0)
+script = ExtResource("1_ipw7w")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.169853, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_7oxi0")
+radial_segments = 16
+rings = 8
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_m1x72")
+inner_radius = 0.623
+outer_radius = 0.747
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_miof0")
+inner_radius = 0.535
+outer_radius = 0.641
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_68ida")
+inner_radius = 0.783
+outer_radius = 0.939
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_s3f7a")
+}
+
+[node name="Area3D" type="Area3D" parent="Node3D"]
+collision_layer = 134217728
+collision_mask = 134217728
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227275, 0)
+shape = SubResource("SphereShape3D_iygay")
