@@ -10,6 +10,7 @@ func _process(delta):
 		$Sprite2D.texture = $SubViewport.get_texture()
 		# fixes fullscreen-toggle bug
 		$Sprite2D.flip_h = false
+		$SubViewport/Game/UIViewport.scale = size.x/320 * Vector2.ONE * 0.1
 
 func _ready():
 	set_process_input(true)

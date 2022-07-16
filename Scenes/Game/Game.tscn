@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=43 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="14_acnhy"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="14_gu2mo"]
 [ext_resource type="FontFile" uid="uid://b01bb8eqxd1x" path="res://Fonts/PressStart2P-Regular.ttf" id="15_ybrsi"]
+[ext_resource type="Script" path="res://Scenes/Game/Message.gd" id="18_3dpu4"]
 [ext_resource type="PackedScene" uid="uid://nulnhn1hj4cb" path="res://Scenes/Game/Pickables/Pickable.tscn" id="18_vqhrh"]
 [ext_resource type="PackedScene" uid="uid://bi88gjvocyj6f" path="res://Scenes/Game/Sounds/bg_music_normal.tscn" id="19_7spd6"]
 
@@ -26,6 +27,28 @@ albedo_color = Color(0.203922, 0.54902, 0.192157, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pqrbk"]
 render_priority = 0
 shader = ExtResource("2_qslig")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jom3x"]
+albedo_color = Color(1, 0.533333, 0.313726, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vys8i"]
+albedo_color = Color(1, 0.74902, 0.427451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1svj5"]
+albedo_color = Color(0.337255, 0.4, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvqex"]
+albedo_color = Color(1, 0.8, 0.411765, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2xa4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auc34"]
+albedo_color = Color(0.278431, 0.054902, 0.0941176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xwmi"]
+albedo_color = Color(0.529412, 0.2, 0.12549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfwl2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2qu5"]
 shading_mode = 0
@@ -73,6 +96,44 @@ _data = {
 "ScaleLoop": SubResource("Animation_udevw")
 }
 
+[sub_resource type="Animation" id="Animation_jxqai"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/normal_font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [18, 23, 13]
+}
+
+[sub_resource type="Animation" id="Animation_vlqf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/normal_font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huuce"]
+_data = {
+"Idle": SubResource("Animation_jxqai"),
+"RESET": SubResource("Animation_vlqf5")
+}
+
 [sub_resource type="Environment" id="Environment_u4c4i"]
 glow_normalized = true
 glow_intensity = 0.62
@@ -82,10 +143,7 @@ glow_blend_mode = 0
 [node name="Game" type="Node3D"]
 script = ExtResource("1_qop40")
 
-[node name="World" type="CSGCombiner3D" parent="."]
-use_collision = true
-collision_layer = 3
-collision_mask = 3
+[node name="World" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="World"]
 use_collision = true
@@ -106,6 +164,7 @@ material = SubResource("StandardMaterial3D_dj0h4")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -40)
+material_override = SubResource("StandardMaterial3D_jom3x")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -113,6 +172,7 @@ size = Vector3(29, 1, 29)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -40)
+material_override = SubResource("StandardMaterial3D_vys8i")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -120,6 +180,7 @@ size = Vector3(8, 1, 18)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -40)
+material_override = SubResource("StandardMaterial3D_1svj5")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -127,6 +188,7 @@ size = Vector3(29, 4, 29)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1, -40)
+material_override = SubResource("StandardMaterial3D_kvqex")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -134,45 +196,51 @@ size = Vector3(29, 6, 29)
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.59672, 17)
+material_override = SubResource("StandardMaterial3D_x2xa4")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(50, 3.97072, 29)
+size = Vector3(49.477, 3.97072, 28.3979)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 7, 3.50115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.76763, 3.50115)
+material_override = SubResource("StandardMaterial3D_auc34")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(42, 6, 2)
+size = Vector3(42, 10.4554, 2)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 7, 19.5011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.58935, 19.5011)
+material_override = SubResource("StandardMaterial3D_auc34")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(2, 6, 34)
+size = Vector3(2, 10.5728, 34)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 7, 19.5011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 4.82976, 19.5011)
+material_override = SubResource("StandardMaterial3D_auc34")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(2, 6, 34)
+size = Vector3(2, 8.33949, 34)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3.53133, -12)
+material_override = SubResource("StandardMaterial3D_4xwmi")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(6, 2, 29)
+size = Vector3(6, 0.915625, 29)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54808, 3.50627, -18.9952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54808, 3.72086, -18.9952)
+material_override = SubResource("StandardMaterial3D_pfwl2")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(6, 1.02996, 5.23894)
+size = Vector3(6, 0.570478, 5.23894)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 15, -68)
@@ -532,6 +600,31 @@ libraries = {
 "": SubResource("AnimationLibrary_lt0vl")
 }
 
+[node name="CenterContainer" type="CenterContainer" parent="UIViewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Message" type="RichTextLabel" parent="UIViewport/CenterContainer"]
+custom_minimum_size = Vector2(800, 10)
+offset_left = 112.0
+offset_top = 287.0
+offset_right = 912.0
+offset_bottom = 312.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("15_ybrsi")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]asdasdasdasd[/center]"
+fit_content_height = true
+script = ExtResource("18_3dpu4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIViewport/CenterContainer/Message"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_huuce")
+}
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u4c4i")
 
@@ -558,9 +651,9 @@ item_name = "Sword"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9765, 3.652, -34.3808)
 item_name = "Shield"
 
-[node name="Shield2" parent="Pickables" instance=ExtResource("18_vqhrh")]
+[node name="Boots" parent="Pickables" instance=ExtResource("18_vqhrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32459, 4.37, -19.5411)
-item_name = "ShieldBoots"
+item_name = "Boots"
 
 [node name="Wings" parent="Pickables" instance=ExtResource("18_vqhrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.643, 1.51375, 17.1744)

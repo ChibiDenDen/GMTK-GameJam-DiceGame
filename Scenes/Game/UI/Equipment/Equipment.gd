@@ -11,10 +11,12 @@ var selected : Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	reload()
-	Inventory.connect("reload", reload)
+	reload(null)
+	Inventory.connect("picked_up", reload)
 
-func reload():
+var first_reload = true
+
+func reload(_arg):
 	var j = 0
 	for inventory_slot in inventory_slots_grid.get_children():
 		if j < Inventory.unlocked_items.size():
@@ -23,7 +25,8 @@ func reload():
 			inventory_slot.item = ""
 		j += 1
 		inventory_slot.setup()
-		inventory_slot.connect("gui_input", inventory_slot_gui, [inventory_slot])
+		if first_reload:
+			inventory_slot.connect("gui_input", inventory_slot_gui, [inventory_slot])
 		if inventory_slot.item != "":
 			inventory_slot.modulate = Color.WHITE
 
@@ -32,7 +35,10 @@ func reload():
 		if equipment_slot_name.begins_with("Disabled"):
 			continue
 		equipment_slots.append(equipment_slot)
-		equipment_slot.connect("gui_input", equipment_slot_gui, [equipment_slot])
+		if first_reload:
+			equipment_slot.connect("gui_input", equipment_slot_gui, [equipment_slot])
+
+	first_reload = false
 
 	for i in range(len(Inventory.equipment)):
 		if Inventory.equipment[i] != null:
