@@ -34,3 +34,9 @@ func _process(delta):
 		var enemies = $CSGBox3D/Area3D.get_overlapping_bodies()
 		for enemy in enemies:
 			enemy.queue_free()
+
+func setup(power):
+	scale = Vector3.ONE * (0.5 + power*0.25)
+	var trail : Node3D = $Trail
+	trail.scale = Vector3.ONE / scale.length()
+	trail.width = 3 * scale.length() * 0.75

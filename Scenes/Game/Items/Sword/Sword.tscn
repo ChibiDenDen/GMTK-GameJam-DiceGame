@@ -33,9 +33,12 @@ transform = Transform3D(1, 0, -2.98023e-08, -7.33162e-09, 1, -6.37073e-11, 0, 0,
 shape = SubResource("BoxShape3D_nxpmy")
 
 [node name="Trail" type="Node3D" parent="."]
-transform = Transform3D(0.932202, -0.183299, 0.312091, 0.173817, 0.983057, 0.0581921, -0.31747, -8.26325e-09, 0.948268, 1.58546, 0.156147, -0.638957)
+transform = Transform3D(0.950488, -0.182331, 0.251651, 0.17336, 0.983175, 0.057564, -0.257913, -0.0110876, 0.966104, 1.58546, 0.156147, -0.638957)
 script = ExtResource("2_xixnt")
 width = 3.0
 width_curve = SubResource("Curve_d2ore")
 max_points = 50
 material = SubResource("ShaderMaterial_o28y5")
+
+[node name="Forward" type="Position3D" parent="Trail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

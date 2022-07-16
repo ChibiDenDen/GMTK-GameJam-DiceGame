@@ -10,3 +10,6 @@ func _ready():
 func _process(delta):
 	for projectile in $CSGCombiner3D/Area3D.get_overlapping_bodies():
 		projectile.queue_free()
+
+func setup(power):
+	scale = Vector3.ONE * (0.5 + power*0.25)

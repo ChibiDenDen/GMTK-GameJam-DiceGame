@@ -79,6 +79,7 @@ func set_item(item_name, side_index):
 	var side = sides[side_index]
 	var item : Node3D = item_scenes[item_name].instantiate()
 	side.add_child(item)
+	item.setup(side_index + 1)
 
 func setup_items():
 	for side in sides:
