@@ -12,7 +12,6 @@ func choose_positional_target():
 	var tween = create_tween()
 	tween.tween_interval(5.0)
 	tween.tween_callback(choose_positional_target)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

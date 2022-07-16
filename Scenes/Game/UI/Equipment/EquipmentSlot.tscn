@@ -1,0 +1,421 @@
+[gd_scene load_steps=5 format=3 uid="uid://xexdems0wwj6"]
+
+[ext_resource type="Shader" path="res://Scenes/Game/UI/Equipment/DiceDot.gdshader" id="1_vaadj"]
+[ext_resource type="Script" path="res://Scenes/Game/UI/Equipment/EquipmentSlot.gd" id="1_vh7w8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lx0j1"]
+shader = ExtResource("1_vaadj")
+
+[sub_resource type="Texture2D" id="Texture2D_x7woh"]
+resource_local_to_scene = false
+resource_name = ""
+
+[node name="EquipmentSlot" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("1_vh7w8")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 79.0
+offset_bottom = 79.0
+color = Color(0.811765, 0.811765, 0.811765, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 79.0
+offset_bottom = 79.0
+
+[node name="One" type="Control" parent="MarginContainer/CenterContainer"]
+visible = false
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/One"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="Two" type="Control" parent="MarginContainer/CenterContainer"]
+visible = false
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Two"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Two"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="Three" type="Control" parent="MarginContainer/CenterContainer"]
+visible = false
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Three"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Three"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Three"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="Four" type="Control" parent="MarginContainer/CenterContainer"]
+visible = false
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Four"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="Five" type="Control" parent="MarginContainer/CenterContainer"]
+visible = false
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Five"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="Six" type="Control" parent="MarginContainer/CenterContainer"]
+visible = false
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 39.0
+offset_bottom = 39.0
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -8.0
+offset_right = 28.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -8.0
+offset_right = -12.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CenterContainer/Six"]
+material = SubResource("ShaderMaterial_lx0j1")
+custom_minimum_size = Vector2(16, 16)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("Texture2D_x7woh")
+metadata/_edit_layout_mode = 1

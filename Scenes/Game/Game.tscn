@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=19 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Camera3D.gd" id="2_2y024"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://Scenes/Game/Items/Sword/Sword.gd" id="2_aqgrs"]
 [ext_resource type="Script" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gd" id="2_skyk2"]
 [ext_resource type="Shader" path="res://Scenes/Game/TrailRenderer/TrailRenderer.gdshader" id="3_bt5u1"]
-[ext_resource type="PackedScene" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
+[ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
+[ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
+albedo_color = Color(0.890196, 1, 0.890196, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0kuj"]
 albedo_color = Color(1, 0.482353, 0.505882, 1)
@@ -33,6 +35,10 @@ shader_param/color = null
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuubb"]
 
 [sub_resource type="Environment" id="Environment_u4c4i"]
+glow_normalized = true
+glow_intensity = 0.62
+glow_strength = 1.33
+glow_blend_mode = 0
 
 [node name="Game" type="Node3D"]
 
@@ -160,11 +166,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 3.21339, 0.137355)
 [node name="ShooterDie6" parent="Enemies" instance=ExtResource("8_6crlg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 1.74465, 0.137355)
 
+[node name="UIViewport" type="CanvasLayer" parent="."]
+
+[node name="Equipment" parent="UIViewport" instance=ExtResource("9_1onw8")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u4c4i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.336879, -0.817484, 0.467154, 0.132168, 0.5323, 0.836175, -0.932226, -0.219947, 0.287365, 2.32451, 3.79325, 0)
+light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_split_1 = 0.037
 directional_shadow_split_2 = 0.1

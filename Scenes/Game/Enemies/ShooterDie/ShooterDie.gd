@@ -6,7 +6,7 @@ const bullet_velocity = 20.0
 
 func find_player():
 	return get_parent().get_parent().find_child("Player")
-	
+
 func _ready():
 	prepare_fire()
 

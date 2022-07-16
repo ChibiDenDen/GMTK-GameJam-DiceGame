@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bm07srnyxadct"]
+
+[node name="Disabled" type="Control"]
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+auto_translate = false
+color = Color(0, 0, 0, 1)
