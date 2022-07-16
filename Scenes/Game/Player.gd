@@ -14,6 +14,7 @@ extends RigidDynamicBody3D
 var item_scenes = {
 	"Sword": preload("res://Scenes/Game/Items/Sword/Sword.tscn"),
 	"Shield": preload("res://Scenes/Game/Items/Shield/Shield.tscn"),
+	"Boots": preload("res://Scenes/Game/Items/Boots/Boots.tscn"),
 }
 
 signal health_changed
@@ -39,9 +40,10 @@ func allow_jump():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var boots = find_child("Boots", true, false)
 	var forward := global_position - camera.global_position
 	forward.y = 0
-	var max_force = max_torque - angular_velocity.length()
+	var max_force = max_torque * (boots.speed if boots else 1) - angular_velocity.length()
 	forward = forward.normalized() * max_force
 	var force_origin = global_position + Vector3.UP * 2 - global_position
 	if Input.is_key_pressed(KEY_W):
@@ -70,7 +72,6 @@ func _process(delta):
 		print_debug("HIT hp = ", hp)
 		hp -= 1
 		emit_signal("health_changed", hp)
-		print("!!! AFTER EMIT")
 		
 	if hp <= 0:
 		# End game screen
@@ -96,4 +97,3 @@ func setup_items():
 		if equipment == null:
 			continue
 		set_item(equipment, i)
-
