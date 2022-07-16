@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgcj2lv82cbih"
+path="res://.godot/imported/Waiting for your Answer.mp3-928fb53537e6ad7811a4a3f9d627eb6e.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Game/Sounds/Waiting for your Answer.mp3"
+dest_files=["res://.godot/imported/Waiting for your Answer.mp3-928fb53537e6ad7811a4a3f9d627eb6e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

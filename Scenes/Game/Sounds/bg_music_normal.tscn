@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi88gjvocyj6f"]
+
+[ext_resource type="AudioStream" uid="uid://cgcj2lv82cbih" path="res://Scenes/Game/Sounds/Waiting for your Answer.mp3" id="1_lc1q1"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_lc1q1")
+volume_db = -9.948
+autoplay = true
