@@ -21,6 +21,25 @@ func _ready():
 		equipment_slots.append(equipment_slot)
 		equipment_slot.connect("gui_input", equipment_slot_gui, [equipment_slot])
 
+	for i in range(len(Inventory.equipment)):
+		if Inventory.equipment[i] != null:
+			setup(Inventory.equipment[i], i)
+	
+func setup(item_name, i):
+	var inv_slot = null
+	for inventory_slot in inventory_slots_grid.get_children():
+		if inventory_slot.item == item_name:
+			inv_slot = inventory_slot
+			break
+	var equip_slot = null
+	for equipment_slot in equipment_slots:
+		if equipment_slot.number == i + 1:
+			equip_slot = equipment_slot
+			break
+	if not inv_slot or not equip_slot:
+		return
+	equip_item(inv_slot, equip_slot)
+
 func unequip(item_name):
 	for equipment_slot in equipment_slots:
 		if equipment_slot.equipped_item == item_name:
@@ -28,6 +47,9 @@ func unequip(item_name):
 	for inventory_slot in inventory_slots_grid.get_children():
 		if inventory_slot.item == item_name:
 			inventory_slot.modulate = Color.WHITE
+	for i in range(len(Inventory.equipment)):
+		if Inventory.equipment[i] == item_name:
+			Inventory.equipment[i] = null
 
 func inventory_slot_gui(event, slot):
 	if event is InputEventMouseButton and event.pressed:
@@ -46,7 +68,8 @@ func equip_item(invenotry_slot, equipment_slot):
 	if equipment_slot.equipped_item != null:
 		unequip(equipment_slot.equipped_item)
 	equipment_slot.set_item(invenotry_slot.item)
-	selected.modulate = Color.GRAY
+	invenotry_slot.modulate = Color.GRAY
+	Inventory.equipment[equipment_slot.number - 1] = invenotry_slot.item
 
 func equipment_slot_gui(event, slot):
 	if event is InputEventMouseButton and event.pressed:

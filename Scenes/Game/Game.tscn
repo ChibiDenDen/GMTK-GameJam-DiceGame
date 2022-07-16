@@ -288,7 +288,5 @@ directional_shadow_split_2 = 0.1
 directional_shadow_split_3 = 0.162
 directional_shadow_max_distance = 13.2
 
-[connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
-[connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]
 [connection signal="gui_input" from="UIViewport/Menu/Panel/VBoxContainer/Control" to="UIViewport/Menu" method="_on_startgame_gui_input"]
 [connection signal="gui_input" from="UIViewport/Menu/Panel/VBoxContainer/Control3" to="UIViewport/Menu" method="_on_exit_gui_input"]
