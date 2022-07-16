@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=47 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://bhwwphlt3c26n" path="res://Theme.tres" id="10_gpy6t"]
 [ext_resource type="Script" path="res://Scenes/Game/UIViewport.gd" id="10_m3rhi"]
 [ext_resource type="Script" path="res://Scenes/Game/UI/HPBar.gd" id="10_vbrhh"]
+[ext_resource type="PackedScene" uid="uid://cjsqunbwdm283" path="res://Scenes/Game/Enemies/Boss/Boss.tscn" id="11_i240x"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="14_acnhy"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="14_gu2mo"]
 [ext_resource type="FontFile" uid="uid://b01bb8eqxd1x" path="res://Fonts/PressStart2P-Regular.ttf" id="15_ybrsi"]
@@ -286,7 +287,7 @@ size = Vector3(88, 30, 20)
 [node name="PlayerHolder" type="Node3D" parent="."]
 
 [node name="Player" type="RigidDynamicBody3D" parent="PlayerHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.037, 1.02322, 16.6001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.272, 1.95199, 16.6001)
 collision_layer = 134217729
 script = ExtResource("1_e1tbc")
 
@@ -496,6 +497,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1156, 5.85981, -52.1305)
 
 [node name="ShooterDie6" parent="Enemies" instance=ExtResource("8_6crlg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1156, 4.39107, -52.1305)
+
+[node name="Boss" parent="Enemies" instance=ExtResource("11_i240x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54937, 6.60015, 16.5091)
 
 [node name="UIViewport" type="CanvasLayer" parent="."]
 process_mode = 3

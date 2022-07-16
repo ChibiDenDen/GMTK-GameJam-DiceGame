@@ -15,6 +15,8 @@ func _ready():
 	pass # Replace with function body.
 
 
+const boss_class = preload("res://Scenes/Game/Enemies/Boss/Boss.gd")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if do_attack_check:
@@ -33,7 +35,10 @@ func _process(delta):
 	if attacking:
 		var enemies = $CSGBox3D/Area3D.get_overlapping_bodies()
 		for enemy in enemies:
-			enemy.queue_free()
+			if enemy is boss_class:
+				enemy.hit()
+			else:
+				enemy.queue_free()
 
 func setup(power):
 	scale = Vector3.ONE * (0.5 + power*0.25)

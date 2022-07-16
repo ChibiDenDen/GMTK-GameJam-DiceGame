@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjsqunbwdm283"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Enemies/Boss/Boss.gd" id="1_rx3sl"]
+[ext_resource type="PackedScene" uid="uid://8cn0hhfhspn6" path="res://Scenes/Game/Enemies/Boss/d20.dae" id="1_wtjuf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gamhy"]
+radius = 1.98506
+
+[sub_resource type="Animation" id="Animation_oxkxo"]
+resource_name = "Damage"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("d20:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2, 2, 2), Vector3(2.019, 1.566, 2.485), Vector3(1.099, 1.328, 1.129), Vector3(2.139, 2.464, 2.384), Vector3(2, 2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("d20:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1, 1.1, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_rap3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("d20:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("d20:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jttyn"]
+_data = {
+"Damage": SubResource("Animation_oxkxo"),
+"RESET": SubResource("Animation_rap3w")
+}
+
+[node name="Boss" type="RigidDynamicBody3D"]
+collision_layer = 2147483649
+collision_mask = 1073741825
+mass = 0.5
+script = ExtResource("1_rx3sl")
+
+[node name="d20" parent="." instance=ExtResource("1_wtjuf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_gamhy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jttyn")
+}

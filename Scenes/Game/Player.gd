@@ -20,6 +20,7 @@ var item_scenes = {
 
 const bullet_class = preload("res://Scenes/Game/Enemies/ShooterDie/Bullet.gd")
 const zombie_class = preload("res://Scenes/Game/Enemies/ZombieDie/ZombieDie.gd")
+const boss_class = preload("res://Scenes/Game/Enemies/Boss/Boss.gd")
 
 signal health_changed
 signal max_health_set
@@ -87,7 +88,7 @@ func _handle_hits():
 	for body in $BulletCollectArea.get_overlapping_bodies():
 		if body is bullet_class:
 			body.queue_free()
-		elif body is zombie_class and body.can_attack:
+		elif (body is zombie_class or body is boss_class) and body.can_attack:
 			body.disable_attack()
 		else:
 			return
