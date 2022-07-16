@@ -1,14 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=24 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
 [ext_resource type="Script" path="res://Scenes/Game/Camera3D.gd" id="2_2y024"]
-[ext_resource type="PackedScene" uid="uid://ds27xo3cblttw" path="res://Scenes/Game/Items/Shield/Shield.tscn" id="3_ia310"]
-[ext_resource type="PackedScene" uid="uid://uhpr6hmvagxc" path="res://Scenes/Game/Items/Sword/Sword.tscn" id="4_qmp51"]
-[ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Items/Shield/Shield.tscn" id="3_ia310"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Items/Sword/Sword.tscn" id="4_qmp51"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
 [ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
-[ext_resource type="Theme" uid="uid://c1tb4jaj3o8ai" path="res://Theme.tres" id="10_gpy6t"]
+[ext_resource type="Theme" uid="uid://bhwwphlt3c26n" path="res://Theme.tres" id="10_gpy6t"]
 [ext_resource type="Script" path="res://Scenes/Game/UIViewport.gd" id="10_m3rhi"]
 [ext_resource type="Script" path="res://Scenes/Game/UI/HPBar.gd" id="10_vbrhh"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/TextButton.gd" id="14_acnhy"]
@@ -110,7 +110,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.5, 0, 0)
 
 [node name="Sword" parent="PlayerHolder/Player/Sides/Three" instance=ExtResource("4_qmp51")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Four" type="Position3D" parent="PlayerHolder/Player/Sides"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, 0, 0)

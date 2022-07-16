@@ -16,15 +16,21 @@ var item_scenes = {
 	"Shield": preload("res://Scenes/Game/Items/Shield/Shield.tscn"),
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	setup_items()
+signal health_changed
+signal max_health_set
 
 var jump_allowed = true
 var hp = 10
 
 const jump_force = 7
 const max_torque = 7
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	setup_items()
+	emit_signal("max_health_set", 10, true)
+
 
 func allow_jump():
 	jump_allowed = true
@@ -56,8 +62,10 @@ func _process(delta):
 		
 	for bullet in $BulletCollectArea.get_overlapping_bodies():
 		bullet.queue_free()
-		print_debug("HIT", hp)
+		print_debug("HIT hp = ", hp)
 		hp -= 1
+		emit_signal("health_changed", hp)
+		print("!!! AFTER EMIT")
 		
 	if hp <= 0:
 		# End game screen
@@ -66,19 +74,3 @@ func _process(delta):
 
 func get_transformed_aabb() -> AABB:
 	return $CSGBox3D.get_transformed_aabb()
-
-func set_item(item_name, side_index):
-	var side = sides[side_index]
-	var item : Node3D = item_scenes[item_name].instantiate()
-	side.add_child(item)
-
-func setup_items():
-	for side in sides:
-		for child in side.get_children():
-			side.remove_child(child)
-	var i = -1
-	for equipment in Inventory.equipment:
-		i += 1
-		if equipment == null:
-			continue
-		set_item(equipment, i)
