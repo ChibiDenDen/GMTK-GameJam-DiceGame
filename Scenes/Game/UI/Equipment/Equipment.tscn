@@ -21,6 +21,7 @@ offset_left = 219.0
 offset_top = 132.0
 offset_right = 805.0
 offset_bottom = 468.0
+pivot_offset = Vector2(293, 168)
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 offset_right = 586.0
