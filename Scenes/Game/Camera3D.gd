@@ -18,7 +18,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("RotateCameraRight"):
 		around_player = around_player.rotated(Vector3.UP, deg2rad(-90))
 	position_target = around_player + player.global_position
-	position_target.y = 6
+	position_target.y = 6 + player.global_position.y
 	global_position = global_position.lerp(position_target, 15*delta)
 	
 	var player_aabb : AABB = player.get_transformed_aabb()
