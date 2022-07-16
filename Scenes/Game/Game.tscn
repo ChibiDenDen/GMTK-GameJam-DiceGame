@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=46 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://Scenes/Game/Message.gd" id="18_3dpu4"]
 [ext_resource type="PackedScene" uid="uid://nulnhn1hj4cb" path="res://Scenes/Game/Pickables/Pickable.tscn" id="18_vqhrh"]
 [ext_resource type="PackedScene" uid="uid://bi88gjvocyj6f" path="res://Scenes/Game/Sounds/bg_music_normal.tscn" id="19_7spd6"]
+[ext_resource type="AudioStream" uid="uid://bpbxbuef447o7" path="res://Scenes/Game/Sounds/Prepare for Battle_looped.wav" id="21_6kl6n"]
+[ext_resource type="Script" path="res://Scenes/Game/BossArena.gd" id="21_x1qy5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
 albedo_color = Color(0.203922, 0.54902, 0.192157, 1)
@@ -139,6 +141,9 @@ glow_normalized = true
 glow_intensity = 0.62
 glow_strength = 1.33
 glow_blend_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_idjpk"]
+size = Vector3(12.6954, 4.47207, 1)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_qop40")
@@ -281,7 +286,7 @@ size = Vector3(88, 30, 20)
 [node name="PlayerHolder" type="Node3D" parent="."]
 
 [node name="Player" type="RigidDynamicBody3D" parent="PlayerHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4134, 1.255, 17.6924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2952, 6.54355, -5.79976)
 collision_layer = 134217729
 script = ExtResource("1_e1tbc")
 
@@ -659,9 +664,27 @@ item_name = "Boots"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.643, 1.51375, 17.1744)
 item_name = "Wings"
 
-[node name="AudioStreamPlayer" parent="." instance=ExtResource("19_7spd6")]
+[node name="BossArena" type="Area3D" parent="."]
+transform = Transform3D(1.05136, 0, 0, 0, 12.3979, 0, 0, 0, 1.36046, 11.5016, 2.93682, 21.7425)
+collision_layer = 0
+collision_mask = 134217728
+audio_bus_override = true
+script = ExtResource("21_x1qy5")
+
+[node name="BgMusicNormal" parent="BossArena" instance=ExtResource("19_7spd6")]
+volume_db = -10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BossArena"]
+transform = Transform3D(3.64498, 0, 0, 0, 1, 0, 0, 0, 27.9284, 1.86225, 0, 0)
+shape = SubResource("BoxShape3D_idjpk")
+
+[node name="BgMusicBoss" type="AudioStreamPlayer" parent="BossArena"]
+stream = ExtResource("21_6kl6n")
+volume_db = -10.0
 
 [connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
 [connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]
 [connection signal="gui_input" from="UIViewport/Menu/Panel/VBoxContainer/Control" to="UIViewport/Menu" method="_on_startgame_gui_input"]
 [connection signal="gui_input" from="UIViewport/Menu/Panel/VBoxContainer/Control3" to="UIViewport/Menu" method="_on_exit_gui_input"]
+[connection signal="body_entered" from="BossArena" to="BossArena" method="_on_boss_arena_body_entered"]
+[connection signal="body_exited" from="BossArena" to="BossArena" method="_on_boss_arena_body_exited"]

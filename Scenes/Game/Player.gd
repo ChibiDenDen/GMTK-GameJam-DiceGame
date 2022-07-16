@@ -24,7 +24,7 @@ signal max_health_set
 var jump_allowed = true
 var is_on_ground = false
 var curr_jump = 0
-var hp = 10
+var hp = 100
 
 const jump_force = 7
 const max_torque = 7
