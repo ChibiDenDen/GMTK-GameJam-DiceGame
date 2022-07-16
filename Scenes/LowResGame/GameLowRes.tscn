@@ -6,13 +6,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uhadu"]
 shader = ExtResource("3_1e7bg")
-shader_param/aberration_amount = 0.73
+shader_param/aberration_amount = 1.01
 shader_param/boost = 1.2
 shader_param/corner_color = Quaternion(0, 0, 0, 1)
-shader_param/curvature_x_amount = 6.0
-shader_param/curvature_y_amount = 4.0
+shader_param/curvature_x_amount = 8.12
+shader_param/curvature_y_amount = 6.6
 shader_param/horizontal_scan_lines_amount = 320.0
-shader_param/horizontal_scan_lines_opacity = 1.0
+shader_param/horizontal_scan_lines_opacity = 0.4
 shader_param/screen_size = Vector2(320, 180)
 shader_param/show_curvature = true
 shader_param/show_horizontal_scan_lines = true
