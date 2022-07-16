@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=21 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
+[ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
 [ext_resource type="Script" path="res://Scenes/Game/Camera3D.gd" id="2_2y024"]
 [ext_resource type="Script" path="res://Scenes/Game/Items/Shield/Shield.gd" id="2_8eg2t"]
 [ext_resource type="Script" path="res://Scenes/Game/Items/Sword/Sword.gd" id="2_aqgrs"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
 [ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
+[ext_resource type="Script" path="res://Scenes/Game/UIViewport.gd" id="10_m3rhi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
 albedo_color = Color(0.890196, 1, 0.890196, 1)
@@ -41,6 +43,7 @@ glow_strength = 1.33
 glow_blend_mode = 0
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_qop40")
 
 [node name="World" type="Node3D" parent="."]
 
@@ -167,6 +170,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 3.21339, 0.137355)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7607, 1.74465, 0.137355)
 
 [node name="UIViewport" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("10_m3rhi")
 
 [node name="Equipment" parent="UIViewport" instance=ExtResource("9_1onw8")]
 visible = false
