@@ -500,8 +500,8 @@ visible = false
 
 [node name="HPBar" type="ProgressBar" parent="UIViewport"]
 custom_minimum_size = Vector2(50, 0)
-offset_right = 401.0
-offset_bottom = 27.0
+offset_right = 100.0
+offset_bottom = 23.0
 theme = ExtResource("10_gpy6t")
 max_value = 10.0
 step = 1.0
@@ -602,6 +602,11 @@ libraries = {
 [node name="CenterContainer" type="CenterContainer" parent="UIViewport"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = 59.0
+offset_right = -34.0
+offset_bottom = 59.0
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 
 [node name="Message" type="RichTextLabel" parent="UIViewport/CenterContainer"]
