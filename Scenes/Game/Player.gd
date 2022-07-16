@@ -21,6 +21,7 @@ signal health_changed
 signal max_health_set
 
 var jump_allowed = true
+var is_on_ground = false
 var max_jumps_allowed = 1
 var curr_jump = 0
 var hp = 10
