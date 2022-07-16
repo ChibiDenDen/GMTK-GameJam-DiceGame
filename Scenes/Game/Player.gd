@@ -7,6 +7,8 @@ func _ready():
 	pass # Replace with function body.
 
 var jump_allowed = true
+var hp = 10
+
 const jump_force = 7
 const max_torque = 7
 
@@ -40,7 +42,13 @@ func _process(delta):
 		
 	for bullet in $BulletCollectArea.get_overlapping_bodies():
 		bullet.queue_free()
-		print_debug("HIT")
+		print_debug("HIT", hp)
+		hp -= 1
+		
+	if hp <= 0:
+		# End game screen
+		queue_free()
+		get_tree().change_scene_to(load("res://Scenes/main_menu.tscn"))
 
 func get_transformed_aabb() -> AABB:
 	return $CSGBox3D.get_transformed_aabb()
