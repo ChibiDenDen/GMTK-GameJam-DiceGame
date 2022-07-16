@@ -68,18 +68,20 @@ func _handle_move():
 	var forward := global_position - camera.global_position
 	forward.y = 0
 	var max_force = max_torque * (boots.speed if boots else 1) - angular_velocity.length()
-	forward = forward.normalized() * max_force
+	forward = forward.normalized()
 	var force_origin = global_position + Vector3.UP * 2 - global_position
+	var force = Vector3.ZERO
 	if Input.is_key_pressed(KEY_W):
-		apply_force(forward, force_origin)
+		force += forward
 	if Input.is_key_pressed(KEY_S):
-		apply_force(-forward, force_origin)
+		force += -forward
 	if Input.is_key_pressed(KEY_D):
-		apply_force(-forward.rotated(Vector3.UP, deg2rad(90)), force_origin)
+		force += -forward.rotated(Vector3.UP, deg2rad(90))
 	if Input.is_key_pressed(KEY_A):
-		apply_force(forward.rotated(Vector3.UP, deg2rad(90)), force_origin)
+		force += forward.rotated(Vector3.UP, deg2rad(90))
 
-		
+	apply_force(force * max_force, force_origin)
+	
 func _handle_hits():
 	for bullet in $BulletCollectArea.get_overlapping_bodies():
 		bullet.queue_free()
