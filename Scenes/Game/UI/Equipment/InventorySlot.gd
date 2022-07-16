@@ -4,6 +4,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if item == "":
+		modulate = Color.GRAY
+		return
 	var icon = load("res://Scenes/Game/Items/%s/Icon.png" % item)
 	$ColorRect/CenterContainer/TextureRect.texture = icon
 

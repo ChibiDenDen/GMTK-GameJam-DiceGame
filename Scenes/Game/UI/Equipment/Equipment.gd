@@ -53,6 +53,8 @@ func unequip(item_name):
 
 func inventory_slot_gui(event, slot):
 	if event is InputEventMouseButton and event.pressed:
+		if slot.item == "":
+			return
 		if slot.modulate == Color.GRAY:
 			unequip(slot.item)
 		if selected != null:

@@ -1,10 +1,6 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 var prev_size = Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,3 +10,9 @@ func _process(delta):
 		$Sprite2D.texture = $SubViewport.get_texture()
 		# fixes fullscreen-toggle bug
 		$Sprite2D.flip_h = false
+
+func _ready():
+	set_process_input(true)
+
+func _input(event: InputEvent):
+	$SubViewport.push_input(event.xformed_by(Transform2D(0, Vector2.ONE/4, 0, Vector2.ZERO)), true)
