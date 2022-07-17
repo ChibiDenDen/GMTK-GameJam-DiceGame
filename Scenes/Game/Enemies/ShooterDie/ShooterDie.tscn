@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjwiy8t0nxs3e"]
+[gd_scene load_steps=7 format=3 uid="uid://cjwiy8t0nxs3e"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.gd" id="1_lee8u"]
+[ext_resource type="Texture2D" uid="uid://lt84ms07mtwb" path="res://Scenes/Game/Enemies/ShooterDie/shooter_skin.png" id="2_gf6l1"]
+[ext_resource type="ArrayMesh" uid="uid://cin8wincoc0dk" path="res://cub.obj" id="3_mjs57"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4mrfh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rontj"]
 albedo_color = Color(0.992157, 1, 0.141176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j63v1"]
+albedo_texture = ExtResource("2_gf6l1")
 
 [node name="ShooterDie" type="RigidDynamicBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19722, 1.54155, 0)
@@ -20,3 +25,8 @@ shape = SubResource("BoxShape3D_4mrfh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 material_override = SubResource("StandardMaterial3D_rontj")
+
+[node name="Cub" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.072, 0, 0, 0, 0.072, 0, 0, 0, 0.072, -3.1475, 0.512839, -0.348203)
+material_override = SubResource("StandardMaterial3D_j63v1")
+mesh = ExtResource("3_mjs57")
