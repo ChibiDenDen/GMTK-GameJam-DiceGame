@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b6or7sluan31c"]
+[gd_scene load_steps=53 format=3 uid="uid://b6or7sluan31c"]
 
 [ext_resource type="Script" path="res://Scenes/Game/Player.gd" id="1_e1tbc"]
 [ext_resource type="Script" path="res://Scenes/Game/Game.gd" id="1_qop40"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://bpbxbuef447o7" path="res://Scenes/Game/Sounds/Prepare for Battle_looped.wav" id="21_6kl6n"]
 [ext_resource type="Script" path="res://Scenes/Game/BossArena.gd" id="21_x1qy5"]
 [ext_resource type="ArrayMesh" uid="uid://cin8wincoc0dk" path="res://cub.obj" id="24_xsp1h"]
+[ext_resource type="PackedScene" uid="uid://borg3xinytuoh" path="res://Scenes/Game/Heart/Heart.tscn" id="26_0erd5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj0h4"]
 albedo_color = Color(0.203922, 0.54902, 0.192157, 1)
@@ -251,7 +252,7 @@ collision_mask = 3
 size = Vector3(6, 0.915625, 29)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54808, 3.72086, -18.9952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.54808, 3.72086, -20.9803)
 material_override = SubResource("StandardMaterial3D_pfwl2")
 use_collision = true
 collision_layer = 3
@@ -677,7 +678,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9765, 3.652, -34.3808)
 item_name = "Shield"
 
 [node name="Boots" parent="Pickables" instance=ExtResource("18_vqhrh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32459, 4.37, -19.5411)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10391, 4.37, -19.5411)
 item_name = "Boots"
 
 [node name="Wings" parent="Pickables" instance=ExtResource("18_vqhrh")]
@@ -701,6 +702,26 @@ shape = SubResource("BoxShape3D_idjpk")
 [node name="BgMusicBoss" type="AudioStreamPlayer" parent="BossArena"]
 stream = ExtResource("21_6kl6n")
 volume_db = -10.0
+
+[node name="HP pickups" type="Node3D" parent="."]
+
+[node name="Heart" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7959, 2.16478, -27.2642)
+
+[node name="Heart2" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12631, 4.46018, -20.1265)
+
+[node name="Heart3" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(0.151727, 0, -0.988423, 0, 1, 0, 0.988423, 0, 0.151727, 36.0253, 4.46018, -36.7821)
+
+[node name="Heart4" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7903, 3.50235, -48.2611)
+
+[node name="Heart5" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7903, 1.03195, -24.9646)
+
+[node name="Heart6" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0558, 1.03195, -11.9108)
 
 [connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
 [connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]

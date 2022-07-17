@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://borg3xinytuoh"]
+
+[ext_resource type="Script" path="res://Scenes/Game/Heart/Heart.gd" id="1_vl0ul"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cx63"]
+albedo_color = Color(1, 0.0862745, 0, 1)
+
+[sub_resource type="Animation" id="Animation_yuafa"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.393156, 0), Vector3(0, 0.0705777, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.01593, 0), Vector3(0, -6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_msfu0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8b3eq"]
+_data = {
+"Idle": SubResource("Animation_yuafa"),
+"RESET": SubResource("Animation_msfu0")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rp04f"]
+height = 1.12871
+radius = 0.769939
+
+[node name="Heart" type="Node3D"]
+script = ExtResource("1_vl0ul")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_6cx63")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.877973, 0, 0, 0, 0.877973, 0, 0, 0, 0.676607, -0.219493, 0.5, 0)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.877973, 0, 0, 0, 0.877973, 0, 0, 0, 0.676607, 0.219493, 0.5, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.539001, -0.49926, 0, 0.49926, 0.539001, 0, 0, 0, 0.667111, 0, 0.206175, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.736595, 0.795228, 0)
+operation = 2
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(0.941941, -0.982521, 0, 0.982521, 0.941941, 0, 0, 0, 1.35725, 0.811403, -0.954024, 1.78695e-07)
+operation = 2
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(0.941941, -0.982521, 0, 0.982521, 0.941941, 0, 0, 0, 1.35725, -1.03378, 0.755116, 1.78695e-07)
+operation = 2
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(0.888421, -0.983441, 0.309209, 0.924742, 0.940948, 0.333822, -0.456248, -0.00783635, 1.27871, -0.228083, -0.303295, -0.930301)
+operation = 2
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(0.899685, -0.983247, -0.27561, 0.936903, 0.941157, -0.297548, 0.406671, 0.00698478, 1.29524, -0.228083, -0.303295, 0.851208)
+operation = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_8b3eq")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 134217728
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377024, 0)
+shape = SubResource("CylinderShape3D_rp04f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

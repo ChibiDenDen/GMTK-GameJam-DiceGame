@@ -53,6 +53,12 @@ func play_movement_sound():
 	$MovementAudioPlayer.stream = movement_sounds[randi() % movement_sounds.size()]
 	$MovementAudioPlayer.play()
 
+func collect_health():
+	hp += 2
+	if hp > 10:
+		hp = 10
+	emit_signal("health_changed", hp)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_handle_move()
