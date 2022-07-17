@@ -1,4 +1,4 @@
-extends Control
+extends Button
 
 var animation_player : AnimationPlayer
 
@@ -9,11 +9,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_global_rect().has_point(get_viewport().get_mouse_position()):
+	if is_hovered():
 		if not animation_player.is_playing():
 			animation_player.play("ScaleLoop")
 	else:
 		if animation_player.is_playing():
 			animation_player.seek(0, true)
 			animation_player.stop(true)
-

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b08slhjvm572r" path="res://better_diff.png" id="4_kusl1"]
 [ext_resource type="PackedScene" uid="uid://uhpr6hmvagxc" path="res://Scenes/Game/Items/Sword/Sword.tscn" id="4_qmp51"]
 [ext_resource type="PackedScene" uid="uid://by7gsgqnne755" path="res://Scenes/Game/Items/Wings/Wings.tscn" id="6_obj7a"]
-[ext_resource type="PackedScene" uid="uid://cjwiy8t0nxs3e" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
+[ext_resource type="PackedScene" path="res://Scenes/Game/Enemies/ShooterDie/ShooterDie.tscn" id="8_6crlg"]
 [ext_resource type="PackedScene" uid="uid://cjy0oqb71jfg2" path="res://Scenes/Game/Enemies/ZombieDie/ZombieDie.tscn" id="8_85blo"]
 [ext_resource type="PackedScene" uid="uid://bpcymf0run3gy" path="res://Scenes/Game/UI/Equipment/Equipment.tscn" id="9_1onw8"]
 [ext_resource type="Theme" uid="uid://bhwwphlt3c26n" path="res://Theme.tres" id="10_gpy6t"]
@@ -576,11 +576,12 @@ grow_vertical = 2
 alignment = 1
 metadata/_edit_layout_mode = 1
 
-[node name="Control" type="Control" parent="UIViewport/Menu/Panel/VBoxContainer"]
+[node name="Control" type="Button" parent="UIViewport/Menu/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 offset_top = 248.0
 offset_right = 1024.0
 offset_bottom = 298.0
+theme = ExtResource("10_gpy6t")
 script = ExtResource("14_acnhy")
 
 [node name="StartGame" type="Label" parent="UIViewport/Menu/Panel/VBoxContainer/Control"]
@@ -600,11 +601,12 @@ libraries = {
 "": SubResource("AnimationLibrary_lt0vl")
 }
 
-[node name="Control3" type="Control" parent="UIViewport/Menu/Panel/VBoxContainer"]
+[node name="Control3" type="Button" parent="UIViewport/Menu/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 offset_top = 302.0
 offset_right = 1024.0
 offset_bottom = 352.0
+theme = ExtResource("10_gpy6t")
 script = ExtResource("14_acnhy")
 
 [node name="StartGame" type="Label" parent="UIViewport/Menu/Panel/VBoxContainer/Control3"]
