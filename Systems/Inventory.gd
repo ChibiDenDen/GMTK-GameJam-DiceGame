@@ -3,7 +3,7 @@ extends Node
 
 var unlocked_items = []
 
-var equipment = [null,null,null,null,null,null]
+var equipment = [null, null, null ,null,null,null]
 
 signal picked_up(item_name)
 

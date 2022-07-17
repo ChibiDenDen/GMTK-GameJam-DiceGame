@@ -20,6 +20,7 @@ var item_scenes = {
 
 const bullet_class = preload("res://Scenes/Game/Enemies/ShooterDie/Bullet.gd")
 const zombie_class = preload("res://Scenes/Game/Enemies/ZombieDie/ZombieDie.gd")
+const boss_class = preload("res://Scenes/Game/Enemies/Boss/Boss.gd")
 
 signal health_changed
 signal max_health_set
@@ -27,7 +28,7 @@ signal max_health_set
 var jump_allowed = true
 var is_on_ground = false
 var curr_jump = 0
-var hp = 100
+var hp = 10
 
 const jump_force = 7
 const max_torque = 7
@@ -37,16 +38,14 @@ var was_on_ground = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setup_items()
-	emit_signal("max_health_set", 10, true)
+	emit_signal("max_health_set", hp, true)
 
 func allow_jump():
 	jump_allowed = true
 
 var movement_sounds = [
-	#preload("res://Scenes/Game/Player/SFX/Movement/collision_paper_soft_01.wav"),
-	#preload("res://Scenes/Game/Player/SFX/Movement/collision_paper_soft_02.wav"),
-	preload("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_01.wav"),
-	preload("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_02.wav"),
+	load("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_01.wav"),
+	load("res://Scenes/Game/Player/SFX/Movement/collision_wood_soft_02.wav"),
 ]
 
 func play_movement_sound():
@@ -89,7 +88,7 @@ func _handle_hits():
 	for body in $BulletCollectArea.get_overlapping_bodies():
 		if body is bullet_class:
 			body.queue_free()
-		elif body is zombie_class and body.can_attack:
+		elif (body is zombie_class or body is boss_class) and body.can_attack:
 			body.disable_attack()
 		else:
 			return

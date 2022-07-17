@@ -14,4 +14,4 @@ func _process(delta):
 			projectile.queue_free()
 
 func setup(power):
-	scale = Vector3.ONE * (0.5 + power*0.25)
+	scale = Vector3.ONE * (0.5 + power*0.2)
