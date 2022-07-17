@@ -723,6 +723,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7903, 1.03195, -24.9646)
 [node name="Heart6" parent="HP pickups" instance=ExtResource("26_0erd5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0558, 1.03195, -11.9108)
 
+[node name="Heart7" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(0.725579, 0, 0.688139, 0, 1, 0, -0.688139, 0, 0.725579, 42.3153, 1.03195, 1.14749)
+
+[node name="Heart8" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(0.725579, 0, 0.688139, 0, 1, 0, -0.688139, 0, 0.725579, 34.5342, 5.31712, 16.3915)
+
+[node name="Heart9" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(-0.636428, 0, 0.771336, 0, 1, 0, -0.771336, 0, -0.636428, 10.5342, 5.31712, 27.0453)
+
+[node name="Heart10" parent="HP pickups" instance=ExtResource("26_0erd5")]
+transform = Transform3D(0.237296, 0, 0.971437, 0, 1, 0, -0.971437, 0, 0.237296, 10.3401, 5.31712, 6.82807)
+
 [connection signal="health_changed" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_health_changed"]
 [connection signal="max_health_set" from="PlayerHolder/Player" to="UIViewport/HPBar" method="_on_player_max_health_set"]
 [connection signal="gui_input" from="UIViewport/Menu/Panel/VBoxContainer/Control" to="." method="_on_restart_gui_input"]
