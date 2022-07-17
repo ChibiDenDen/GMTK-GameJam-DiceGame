@@ -19,6 +19,8 @@ func _process(delta):
 	var to_player = player.global_position - global_position
 	var distance_to_player = to_player.length()
 	if distance_to_player < 20:
+		if not can_hit:
+			to_player = -to_player
 		apply_force(to_player.normalized() * 2, to_local(global_position + Vector3.UP * 2))
 
 func disable_attack():
