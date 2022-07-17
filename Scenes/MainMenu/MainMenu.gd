@@ -18,7 +18,7 @@ func _on_startgame_gui_input(event):
 
 func _on_exit_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
-		get_tree().change_scene_to(load("res://Scenes/main_menu.tscn"))
+		get_tree().quit()
 
 
 func _on_about_gui_input(event):
