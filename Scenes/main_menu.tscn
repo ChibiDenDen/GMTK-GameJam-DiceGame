@@ -47,39 +47,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-offset_left = 182.0
-offset_top = 124.0
-offset_right = 842.0
-offset_bottom = 475.0
+offset_left = 92.0
+offset_top = 73.0
+offset_right = 932.0
+offset_bottom = 527.0
 
 [node name="GameName" type="Label" parent="CenterContainer/VBoxContainer"]
-offset_right = 660.0
-offset_bottom = 113.0
+offset_right = 840.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.211765, 0.729412, 0.733333, 1)
 theme_override_fonts/font = ExtResource("1_ek0wk")
-theme_override_font_sizes/font_size = 110
-text = "A-Game"
+theme_override_font_sizes/font_size = 60
+text = "Slice and dice
+ "
 horizontal_alignment = 1
 
 [node name="By" type="Label" parent="CenterContainer/VBoxContainer"]
-offset_top = 117.0
-offset_right = 660.0
-offset_bottom = 135.0
+offset_top = 130.0
+offset_right = 840.0
+offset_bottom = 184.0
 theme_override_fonts/font = ExtResource("1_ek0wk")
 theme_override_font_sizes/font_size = 15
-text = "By: Dani Frank"
+text = "A Game
+
+By: Dani Frank, Lotem Amiel, OmerGan"
 horizontal_alignment = 1
 
 [node name="space" type="Control" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
-offset_top = 139.0
-offset_right = 660.0
-offset_bottom = 189.0
+offset_top = 188.0
+offset_right = 840.0
+offset_bottom = 238.0
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
-offset_top = 193.0
-offset_right = 660.0
-offset_bottom = 243.0
+offset_top = 242.0
+offset_right = 840.0
+offset_bottom = 292.0
 script = ExtResource("2_rai7d")
 
 [node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control"]
@@ -99,9 +103,9 @@ libraries = {
 
 [node name="Control2" type="Control" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
-offset_top = 247.0
-offset_right = 660.0
-offset_bottom = 297.0
+offset_top = 296.0
+offset_right = 840.0
+offset_bottom = 346.0
 script = ExtResource("2_rai7d")
 
 [node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control2"]
@@ -121,9 +125,9 @@ libraries = {
 
 [node name="Control3" type="Control" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
-offset_top = 301.0
-offset_right = 660.0
-offset_bottom = 351.0
+offset_top = 350.0
+offset_right = 840.0
+offset_bottom = 400.0
 script = ExtResource("2_rai7d")
 
 [node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control3"]
@@ -131,7 +135,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("1_ek0wk")
 theme_override_font_sizes/font_size = 0
-text = "EXIT"
+text = "ABOUT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -140,5 +144,27 @@ libraries = {
 "": SubResource("AnimationLibrary_lt0vl")
 }
 
+[node name="Control4" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_top = 404.0
+offset_right = 840.0
+offset_bottom = 454.0
+script = ExtResource("2_rai7d")
+
+[node name="StartGame" type="Label" parent="CenterContainer/VBoxContainer/Control4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("1_ek0wk")
+theme_override_font_sizes/font_size = 0
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Control4/StartGame"]
+libraries = {
+"": SubResource("AnimationLibrary_lt0vl")
+}
+
 [connection signal="gui_input" from="CenterContainer/VBoxContainer/Control" to="." method="_on_startgame_gui_input"]
-[connection signal="gui_input" from="CenterContainer/VBoxContainer/Control3" to="." method="_on_exit_gui_input"]
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/Control3" to="." method="_on_about_gui_input"]
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/Control4" to="." method="_on_exit_gui_input"]
