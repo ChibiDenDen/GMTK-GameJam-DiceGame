@@ -523,6 +523,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54937, 6.60015, 16.5091)
 process_mode = 3
 script = ExtResource("10_m3rhi")
 
+[node name="LevelName" type="Label" parent="UIViewport"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -153.0
+offset_right = 21.0
+offset_bottom = 52.0
+grow_horizontal = 0
+scale = Vector2(0.88, 0.84)
+theme = ExtResource("10_gpy6t")
+text = "Cam #4 (FIELD)
+2022-17-07"
+horizontal_alignment = 2
+clip_text = true
+
 [node name="Equipment" parent="UIViewport" instance=ExtResource("9_1onw8")]
 visible = false
 
