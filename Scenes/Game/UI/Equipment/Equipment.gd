@@ -11,6 +11,7 @@ var selected : Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Inventory.reset()
 	reload(null)
 	Inventory.connect("picked_up", reload)
 

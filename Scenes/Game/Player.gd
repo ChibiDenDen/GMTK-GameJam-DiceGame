@@ -37,6 +37,7 @@ var was_on_ground = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Inventory.reset()
 	setup_items()
 	emit_signal("max_health_set", hp, true)
 

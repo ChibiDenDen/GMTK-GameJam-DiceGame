@@ -11,3 +11,7 @@ func pick_up(item_name):
 	print("Picked up " + item_name)
 	unlocked_items.append(item_name)
 	emit_signal("picked_up", item_name)
+
+func reset():
+	unlocked_items = []
+	equipment = [null, null, null ,null,null,null]
